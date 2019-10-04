@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafb76f6b4327444ba4b9b1196eac4c9, type: 3}
   m_Name: ReglagesSplashScreen
   m_EditorClassIdentifier: 
-  nextScene: MainMenu
+  nextScene: Test
   splashScreenTime: 2
   imgSplashs:
   - {fileID: 21300000, guid: 4ceb2e7ec2d694f9eac3dce1f42aac7f, type: 3}
