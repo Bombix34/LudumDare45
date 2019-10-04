@@ -22,8 +22,7 @@ public class SimpleMusic : AudioEvent {
 	public IEnumerator StartMusic(AudioSource source){
 		this.isPlaying = true;
 		index = -1;
-        //ATTENTION LA LIGNE CI DESSOUS EST IMPORTANTE MAIS EXPLOSE => A CHANGER !
-		//ArrayExtension.Shuffle(this.clips);//On randomize les music
+    	ArrayExtension.Shuffle(this.clips);//On randomize les music
         while (true) {
 			if(this.isPlaying && !source.isPlaying)
             	PlayNext(source);
