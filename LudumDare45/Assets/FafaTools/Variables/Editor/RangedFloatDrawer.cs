@@ -29,12 +29,12 @@ public class RangedFloatDrawer : PropertyDrawer {
 
 		var rangeBoundsLabel1Rect = new Rect(position);
 		rangeBoundsLabel1Rect.width = rangeBoundsLabelWidth;
-		GUI.Label(rangeBoundsLabel1Rect, new GUIContent(minValue.ToString("F2")));
+		GUI.Label(rangeBoundsLabel1Rect, new GUIContent(minValue.ToString("F3")));
 		position.xMin += rangeBoundsLabelWidth;
 
 		var rangeBoundsLabel2Rect = new Rect(position);
 		rangeBoundsLabel2Rect.xMin = rangeBoundsLabel2Rect.xMax - rangeBoundsLabelWidth;
-		GUI.Label(rangeBoundsLabel2Rect, new GUIContent(maxValue.ToString("F2")));
+		GUI.Label(rangeBoundsLabel2Rect, new GUIContent(maxValue.ToString("F3")));
 		position.xMax -= rangeBoundsLabelWidth;
 
 		EditorGUI.BeginChangeCheck();

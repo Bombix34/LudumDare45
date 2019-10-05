@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpaceElement : MonoBehaviour
+public abstract class SpaceElement : MonoBehaviour
 {
     [SerializeField] protected Rigidbody2D body;
 
@@ -21,6 +21,8 @@ public class SpaceElement : MonoBehaviour
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
     }
+
+    protected abstract void CheckNextStep();
 
     protected void OnBecameInvisible()
     {

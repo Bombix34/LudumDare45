@@ -8,9 +8,9 @@ public class Ashe : SpaceElement
 
     protected override void Awake()
     {
-        float size = Random.Range(settings.minSizeOnSpawn, settings.maxSizeOnSpawn);
+        float size = Random.Range(settings.SizeOnSpawn.minValue, settings.SizeOnSpawn.maxValue);
         transform.localScale = new Vector3(size,size,size);
-        body.mass *= size;
+        body.mass = Random.Range(settings.MassOnSpawn.minValue,settings.MassOnSpawn.maxValue);
         body.velocity = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-1f, 1f)) * Random.Range(1f, 8f);
         transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
         //transform.LookAt
@@ -35,6 +35,7 @@ public class Ashe : SpaceElement
                 if (newSize > settings.maxSizeAshes)
                     newSize = settings.maxSizeAshes;
                 transform.localScale = new Vector3(newSize, newSize, newSize);
+                body.mass += other.GetComponent<Rigidbody2D>().mass;
                 GameManager.Instance.RemoveAshe(other.gameObject);
             }
             else
@@ -44,9 +45,15 @@ public class Ashe : SpaceElement
                 if (newSize > settings.maxSizeAshes)
                     newSize = settings.maxSizeAshes;
                 other.transform.localScale = new Vector3(newSize, newSize, newSize);
+                other.GetComponent<Rigidbody2D>().mass+=body.mass;
                 GameManager.Instance.RemoveAshe(this.gameObject);
             }
         }
+    }
+
+    protected override void CheckNextStep()
+    {
+        throw new System.NotImplementedException();
     }
 
 }

@@ -6,10 +6,10 @@ using UnityEngine;
 public class AsheSettings :ScriptableObject
 {
     [Header("Réglage Spawn")]
-    [Range(0.0001f, 0.2f)]
-    public float minSizeOnSpawn = 0.01f;
-    [Range(0.0001f, 0.2f)]
-    public float maxSizeOnSpawn = 0.02f;
+    [MinMaxRange(0.0001f, 0.2f)]
+    public RangedFloat SizeOnSpawn;
+    [MinMaxRange(0.1f, 10f)]
+    public RangedFloat MassOnSpawn;
 
     [Header("Autres")]
     [Range(0.01f, 0.3f)]
