@@ -17,7 +17,6 @@ public class Ashe : SpaceElement
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-       
     }
 
     protected override void OnCollisionEnter2D(Collision2D collision)
@@ -28,17 +27,16 @@ public class Ashe : SpaceElement
             Vector2 otherVelocity = other.GetComponent<Rigidbody2D>().velocity;
             if (otherVelocity.magnitude + (5 * other.GetComponent<Rigidbody2D>().mass) < body.velocity.magnitude + (5 * body.mass)) 
             {
-                body.velocity += (otherVelocity * 0.5f);
+               // body.velocity += (otherVelocity * 0.5f);
                 float newSize = transform.localScale.x + other.transform.localScale.x;
                 if (newSize > 3f)
                     newSize = 3f;
                 transform.localScale = new Vector3(newSize, newSize, newSize);
                 GameManager.Instance.RemoveAshe(other.gameObject);
-                print(body.velocity.magnitude);
             }
             else
             {
-                other.GetComponent<Rigidbody2D>().velocity+=(body.velocity*0.5f);
+                //other.GetComponent<Rigidbody2D>().velocity+=(body.velocity*0.5f);
                 float newSize = transform.localScale.x + other.transform.localScale.x;
                 if (newSize > 3f)
                     newSize = 3f;
