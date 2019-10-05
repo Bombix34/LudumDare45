@@ -2,44 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ashe : MonoBehaviour
+public class Ashe : SpaceElement
 {
-    Vector2 baseVelocity;
 
-    [SerializeField] Rigidbody2D body;
-
-    void Awake()
+    protected override void Awake()
     {
         baseVelocity = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-1f, 1f)) * Random.Range(1f, 8f);
         float size = Random.Range(0.2f, 0.8f);
         transform.localScale = new Vector3(size,size,size);
+        body.mass *= size;
         body.velocity = baseVelocity;
+        body.MoveRotation(Random.Range(0f, 360f));
     }
 
-    void FixedUpdate()
+    protected override void FixedUpdate()
     {
-        foreach(var item in this.GetComponentsInChildren<Rigidbody2D>())
-        {
-            item.velocity = body.velocity;
-        }
+        base.FixedUpdate();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject other = collision.gameObject;
         if(other.tag=="Ashe")
         {
             Vector2 otherVelocity = other.GetComponent<Rigidbody2D>().velocity;
-            if (otherVelocity.magnitude < body.velocity.magnitude)
+            if (otherVelocity.magnitude + (5 * other.GetComponent<Rigidbody2D>().mass) < body.velocity.magnitude + (5 * body.mass)) 
             {
-                other.transform.parent = this.transform;
-                other.GetComponent<Rigidbody2D>().velocity = body.velocity;
+                body.velocity += (otherVelocity * 0.5f);
+                if (transform.localScale.x < 1f)
+                    transform.localScale = new Vector3(transform.localScale.x+other.transform.localScale.x, transform.localScale.x + other.transform.localScale.x, transform.localScale.x + other.transform.localScale.x);
+                GameManager.Instance.RemoveAshe(other.gameObject);
             }
             else
             {
-                this.transform.parent = other.transform;
-                body.velocity = other.GetComponent<Rigidbody2D>().velocity;
+                other.GetComponent<Rigidbody2D>().velocity+=(body.velocity*0.5f);
+                if(other.transform.localScale.x<1f)
+                    other.transform.localScale = new Vector3(transform.localScale.x + other.transform.localScale.x, transform.localScale.x + other.transform.localScale.x, transform.localScale.x + other.transform.localScale.x);
+                GameManager.Instance.RemoveAshe(this.gameObject);
             }
         }
     }
+
 }

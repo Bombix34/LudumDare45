@@ -20,5 +20,12 @@ public class GameManager : Singleton<GameManager>
         Ashes.Add(ash);
         DebugUI.Instance.UpdateAshes(Ashes.Count);
     }
+
+    public void RemoveAshe(GameObject toRm)
+    {
+        Ashes.Remove(toRm);
+        Destroy(toRm);
+        DebugUI.Instance.UpdateAshes(Ashes.Count);
+    }
     
 }
