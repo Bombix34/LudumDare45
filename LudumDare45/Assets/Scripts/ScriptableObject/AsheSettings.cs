@@ -11,6 +11,10 @@ public class AsheSettings :ScriptableObject
     [MinMaxRange(0.1f, 10f)]
     public RangedFloat MassOnSpawn;
 
+    [MinMaxRange(0.1f, 10f)]
+    public RangedFloat SpeedOnSpawn;
+
+
     [Header("Autres")]
     [Range(0.01f, 0.3f)]
     public float maxSizeAshes = 0.03f;

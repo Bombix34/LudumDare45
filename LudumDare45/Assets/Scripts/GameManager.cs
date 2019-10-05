@@ -9,22 +9,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<GameObject> Trous;
 
     public Vector3 ScreenRange => screenRange;
-    public Vector3 screenRange;
+    Vector3 screenRange;
 
     void Awake()
     {
         Ashes = new List<GameObject>();
         Planets = new List<GameObject>();
         Trous = new List<GameObject>();
-    }
 
-    void Update()
-    {
-        /*
-        Vector3 StartPoint = Camera.main.ScreenToWorldPoint(Vector3.zero);
-        Vector3 EndPoint = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+        Vector3 StartPoint = Camera.main.ScreenToWorldPoint(new Vector3(0f, 0f, 20f));
+        Vector3 EndPoint = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 20f));
         screenRange = EndPoint - StartPoint;
-        */
     }
 
     public void AddAshes(GameObject ash)

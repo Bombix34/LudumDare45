@@ -22,25 +22,26 @@ public abstract class SpaceElement : MonoBehaviour
     {
     }
 
-    protected abstract void CheckNextStep();
+    public abstract void CheckNextStep();
 
     protected void OnBecameInvisible()
     {
-        if (transform.localPosition.x > 14f)
+        Vector3 screenRange = GameManager.Instance.ScreenRange;
+        if (transform.localPosition.x > screenRange.x/2)
         {
-            transform.localPosition = new Vector3(-1* transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
+            transform.localPosition = new Vector3(-screenRange.x/2, transform.localPosition.y, transform.localPosition.z);
         }
-        else if (transform.localPosition.x < -14f)
+        else if (transform.localPosition.x < -screenRange.x / 2)
         {
-            transform.localPosition = new Vector3(-1f *transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
+            transform.localPosition = new Vector3(screenRange.x / 2, transform.localPosition.y, transform.localPosition.z);
         }
-        if (transform.localPosition.y > 6f)
+        if (transform.localPosition.y > screenRange.y / 2)
         {
-            transform.localPosition = new Vector3(transform.localPosition.x, -1f *transform.localPosition.y, transform.localPosition.z);
+            transform.localPosition = new Vector3(transform.localPosition.x, -screenRange.y / 2, transform.localPosition.z);
         }
-        else if (transform.localPosition.y < -6f)
+        else if (transform.localPosition.y < -screenRange.y / 2)
         {
-            transform.localPosition = new Vector3(transform.localPosition.x, -1f* transform.localPosition.y, transform.localPosition.z);
+            transform.localPosition = new Vector3(transform.localPosition.x, screenRange.y / 2, transform.localPosition.z);
         }
     }
 

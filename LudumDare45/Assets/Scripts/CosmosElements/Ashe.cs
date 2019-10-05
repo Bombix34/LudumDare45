@@ -11,7 +11,7 @@ public class Ashe : SpaceElement
         float size = Random.Range(settings.SizeOnSpawn.minValue, settings.SizeOnSpawn.maxValue);
         transform.localScale = new Vector3(size,size,size);
         body.mass = Random.Range(settings.MassOnSpawn.minValue,settings.MassOnSpawn.maxValue);
-        body.velocity = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-1f, 1f)) * Random.Range(1f, 8f);
+        body.velocity = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * Random.Range(settings.SpeedOnSpawn.minValue, settings.SpeedOnSpawn.maxValue);
         transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
         //transform.LookAt
         body.MoveRotation(Random.Range(0f, 360f));
@@ -51,7 +51,7 @@ public class Ashe : SpaceElement
         }
     }
 
-    protected override void CheckNextStep()
+    public override void CheckNextStep()
     {
         throw new System.NotImplementedException();
     }
