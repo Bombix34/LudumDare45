@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpaceElement : MonoBehaviour
 {
-    protected Vector2 baseVelocity;
-
     [SerializeField] protected Rigidbody2D body;
 
 
@@ -15,11 +13,10 @@ public class SpaceElement : MonoBehaviour
 
     protected void Update()
     {
-
-        //onBecameInvisible();
     }
     protected virtual void FixedUpdate()
     {
+       // if(body.velocity.magnitude)
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
@@ -30,23 +27,18 @@ public class SpaceElement : MonoBehaviour
     {
         if (transform.localPosition.x > 14f)
         {
-            print("droite");
-            print(transform.localPosition.x);
             transform.localPosition = new Vector3(-1* transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
         }
         else if (transform.localPosition.x < -14f)
         {
-            print("gauche");
             transform.localPosition = new Vector3(-1f *transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
         }
         if (transform.localPosition.y > 6f)
         {
-            print("haut");
             transform.localPosition = new Vector3(transform.localPosition.x, -1f *transform.localPosition.y, transform.localPosition.z);
         }
         else if (transform.localPosition.y < -6f)
         {
-            print("bas");
             transform.localPosition = new Vector3(transform.localPosition.x, -1f* transform.localPosition.y, transform.localPosition.z);
         }
     }

@@ -18,7 +18,6 @@ public class ClickSpawner : MonoBehaviour
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,20f));
             GameManager.Instance.AddAshes(Instantiate(particlePrefab, mousePosition, Quaternion.identity));
-            GameManager.Instance.AddAshes(Instantiate(particlePrefab, mousePosition, Quaternion.identity));
         }
     }
 }
