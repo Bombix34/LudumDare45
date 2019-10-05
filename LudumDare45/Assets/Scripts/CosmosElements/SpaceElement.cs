@@ -16,7 +16,6 @@ public class SpaceElement : MonoBehaviour
     }
     protected virtual void FixedUpdate()
     {
-       // if(body.velocity.magnitude)
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
