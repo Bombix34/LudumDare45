@@ -14,8 +14,6 @@ GameObject:
   - component: {fileID: 3170495044036040503}
   - component: {fileID: 1769611686391485006}
   - component: {fileID: 554158413099606771}
-  - component: {fileID: 4627842871755860719}
-  - component: {fileID: 2281080969800571493}
   m_Layer: 9
   m_Name: Planet
   m_TagString: Planet
@@ -33,7 +31,8 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 17.860191, y: 23.753119, z: 249.99986}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5811403953290796190}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -134,29 +133,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 1769611686391485006}
   settings: {fileID: 11400000, guid: f71a39fc5a5e96548acd1ff5306e55f9, type: 2}
---- !u!58 &4627842871755860719
-CircleCollider2D:
+  gravitySystem: {fileID: 8541284372669425311}
+  gravityArea: {fileID: 7042748631689759103}
+--- !u!1 &2971173647653972523
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2671177529242657154}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 1
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 22
---- !u!250 &2281080969800571493
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5811403953290796190}
+  - component: {fileID: 8541284372669425311}
+  - component: {fileID: 7042748631689759103}
+  m_Layer: 9
+  m_Name: gravityArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5811403953290796190
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2971173647653972523}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2671177529242657152}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!250 &8541284372669425311
 PointEffector2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2671177529242657154}
+  m_GameObject: {fileID: 2971173647653972523}
   m_Enabled: 1
   m_UseColliderMask: 1
   m_ColliderMask:
@@ -170,3 +187,19 @@ PointEffector2D:
   m_ForceMode: 2
   m_Drag: 0
   m_AngularDrag: 0
+--- !u!58 &7042748631689759103
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2971173647653972523}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 22

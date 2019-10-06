@@ -21,4 +21,9 @@ MonoBehaviour:
   SpeedOnSpawn:
     minValue: 0
     maxValue: 0
+  gravityRange: 3
+  gravityOnAshe: -40
+  gravityOnPlanet: -300
+  gravityOnStar: -750
+  gravityOnHoles: -750
   maxSizeHole: 47.7

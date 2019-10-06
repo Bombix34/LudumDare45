@@ -6,6 +6,9 @@ public class Planet : SpaceElement
 {
     [SerializeField] PlanetSettings settings;
 
+    [SerializeField] PointEffector2D gravitySystem;
+    [SerializeField] CircleCollider2D gravityArea;
+
     protected override void Awake()
     {
         float size = Random.Range(settings.SizeOnSpawn.minValue, settings.SizeOnSpawn.maxValue);
@@ -20,6 +23,16 @@ public class Planet : SpaceElement
     private void Start()
     {
         AddNewMaterial();
+        gravitySystem.forceMagnitude = settings.planetGravity;
+        gravityArea.radius = settings.gravityRange * transform.localScale.x;
+    }
+
+    protected override void Update()
+    {
+        // A SUPPRIMER
+        gravitySystem.forceMagnitude = settings.planetGravity;
+        gravityArea.radius = settings.gravityRange;
+        //
     }
 
     protected override void FixedUpdate()
@@ -27,12 +40,19 @@ public class Planet : SpaceElement
         base.FixedUpdate();
     }
 
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(0f, 1f, 0f, 0.5f);
+        Gizmos.DrawSphere(this.transform.position, settings.gravityRange * transform.localScale.x);
+    }
+
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject other = collision.gameObject;
         if (other.tag == "Ashe")
         {
-            float newSize = transform.localScale.x + 0.01f;
+            float newSize = transform.localScale.x + 0.005f;
             if (newSize > settings.maxSizePlanet)
               newSize = settings.maxSizePlanet;
             transform.localScale = new Vector3(newSize, newSize, newSize);
@@ -45,7 +65,7 @@ public class Planet : SpaceElement
             Rigidbody2D otherbody = other.GetComponent<Rigidbody2D>();
             if(otherbody.mass+other.transform.localScale.magnitude<body.mass+transform.localScale.magnitude)
             {
-                float newSize = transform.localScale.x + other.transform.localScale.x;
+                float newSize = transform.localScale.x + (other.transform.localScale.x/2);
                 if (newSize > settings.maxSizePlanet)
                     newSize = settings.maxSizePlanet;
                 transform.localScale = new Vector3(newSize, newSize, newSize);

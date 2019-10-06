@@ -28,6 +28,12 @@ public class PlanetSettings : ScriptableObject
     public float massToTransform = 15f;
 
 
+    [Header("Réglages gravité")]
+    [Range(1f, 30f)]
+    public float gravityRange = 22f;
+    [Range(-100f, -1f)]
+    public float planetGravity = -10f;
+
     [Header("Autres")]
     [Range(0.01f, 1f)]
     public float maxSizePlanet = 0.3f;

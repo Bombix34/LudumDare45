@@ -35,9 +35,19 @@ public class StarSettings : ScriptableObject
     [Range(10f, 1000f)]
     public float massToTransform = 15f;
 
+    [Header("Réglages gravité")]
+    [Range(1f, 30f)]
+    public float gravityRange = 16f;
+    [Range(-1000f, -1f)]
+    public  float gravityOnAshe = -40f;
+    [Range(-1000f, -1f)]
+    public  float gravityOnPlanet = -300f;
+    [Range(-1500f, -1f)]
+    public float gravityOnStar = -750f;
+
     [Header("Autres")]
     [Range(0.01f, 5f)]
-    public float maxSizeStar = 1f;
+    public  float maxSizeStar = 1f;
 
     [MinMaxRange(1f, 100f)]
     public RangedFloat lightIntensity;

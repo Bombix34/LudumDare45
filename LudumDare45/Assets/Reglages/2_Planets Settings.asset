@@ -34,4 +34,6 @@ MonoBehaviour:
     maxValue: 1.7416865
   chanceToTransform: 66.9
   massToTransform: 500
+  gravityRange: 22
+  planetGravity: -10
   maxSizePlanet: 0.08

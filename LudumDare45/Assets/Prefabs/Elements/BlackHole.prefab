@@ -120,6 +120,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 5512704113320892030}
   settings: {fileID: 11400000, guid: e175f69a470c8884ea4090624d6c7709, type: 2}
+  asheArea: {fileID: 5736898911228265779}
+  planetArea: {fileID: 9038489134711488939}
+  starArea: {fileID: 7300369872306100033}
+  holeArea: {fileID: 6714951863532623667}
 --- !u!58 &645314276573292521
 CircleCollider2D:
   m_ObjectHideFlags: 0

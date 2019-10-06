@@ -11,7 +11,7 @@ public abstract class SpaceElement : MonoBehaviour
     {
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
     }
     protected virtual void FixedUpdate()

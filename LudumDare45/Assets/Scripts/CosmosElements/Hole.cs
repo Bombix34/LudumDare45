@@ -6,6 +6,11 @@ public class Hole : SpaceElement
 {
     [SerializeField] HoleSettings settings;
 
+    [SerializeField] PointEffector2D asheArea;
+    [SerializeField] PointEffector2D planetArea;
+    [SerializeField] PointEffector2D starArea;
+    [SerializeField] PointEffector2D holeArea;
+
     protected override void Awake()
     {
         float size = Random.Range(settings.SizeOnSpawn.minValue, settings.SizeOnSpawn.maxValue);
@@ -19,13 +24,20 @@ public class Hole : SpaceElement
 
     private void Start()
     {
-        AddNewMaterial();
+        UpdateGravity();
     }
 
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
         body.velocity = new Vector2(0f, 0f);
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(0f, 0f, 1f, 0.5f);
+        Gizmos.DrawSphere(this.transform.position, settings.gravityRange * transform.localScale.x);
     }
 
     protected override void OnCollisionEnter2D(Collision2D collision)
@@ -37,6 +49,7 @@ public class Hole : SpaceElement
             if (newSize > settings.maxSizeHole)
                 newSize = settings.maxSizeHole;
             transform.localScale = new Vector3(newSize, newSize, newSize);
+            UpdateGravity();
             body.mass += other.GetComponent<Rigidbody2D>().mass;
             GameManager.Instance.RemoveAshe(other.gameObject);
             CheckNextStep();
@@ -47,6 +60,7 @@ public class Hole : SpaceElement
             if (newSize > settings.maxSizeHole)
                 newSize = settings.maxSizeHole;
             transform.localScale = new Vector3(newSize, newSize, newSize);
+            UpdateGravity();
             body.mass += other.GetComponent<Rigidbody2D>().mass;
             GameManager.Instance.RemovePlanet(other.gameObject);
             CheckNextStep();
@@ -57,6 +71,7 @@ public class Hole : SpaceElement
             if (newSize > settings.maxSizeHole)
                 newSize = settings.maxSizeHole;
             transform.localScale = new Vector3(newSize, newSize, newSize);
+            UpdateGravity();
             body.mass += other.GetComponent<Rigidbody2D>().mass;
             GameManager.Instance.RemoveStar(other.gameObject);
             CheckNextStep();
@@ -70,11 +85,25 @@ public class Hole : SpaceElement
                 if (newSize > settings.maxSizeHole)
                     newSize = settings.maxSizeHole;
                 transform.localScale = new Vector3(newSize, newSize, newSize);
+                UpdateGravity();
                 body.mass += other.GetComponent<Rigidbody2D>().mass;
                 GameManager.Instance.RemoveHole(other.gameObject);
                 CheckNextStep();
             }
         }
+    }
+
+    void UpdateGravity()
+    {
+        asheArea.forceMagnitude = settings.gravityOnAshe;
+        planetArea.forceMagnitude = settings.gravityOnPlanet;
+        starArea.forceMagnitude = settings.gravityOnStar;
+        holeArea.forceMagnitude = settings.gravityOnHoles;
+
+        asheArea.GetComponent<CircleCollider2D>().radius = (settings.gravityRange * transform.localScale.x) / 3.5433f;
+        planetArea.GetComponent<CircleCollider2D>().radius = (settings.gravityRange * transform.localScale.x) / 3.5433f;
+        starArea.GetComponent<CircleCollider2D>().radius = (settings.gravityRange * transform.localScale.x) / 3.5433f;
+        starArea.GetComponent<CircleCollider2D>().radius = (settings.gravityRange * transform.localScale.x) / 3.5433f;
     }
 
     public override void CheckNextStep()
