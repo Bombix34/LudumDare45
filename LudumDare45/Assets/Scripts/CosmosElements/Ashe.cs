@@ -37,6 +37,7 @@ public class Ashe : SpaceElement
                 transform.localScale = new Vector3(newSize, newSize, newSize);
                 body.mass += other.GetComponent<Rigidbody2D>().mass;
                 GameManager.Instance.RemoveAshe(other.gameObject);
+                CheckNextStep();
             }
             else
             {
@@ -53,7 +54,22 @@ public class Ashe : SpaceElement
 
     public override void CheckNextStep()
     {
-        throw new System.NotImplementedException();
+        if(body.mass>=settings.massToTransform)
+        {
+            float rand = Random.Range(0f, 1f);
+            if(rand<(settings.chanceToTransform/100))
+            {
+                GameManager manager = GameManager.Instance;
+                manager.AddPlanet(Instantiate(manager.PlanetPrefab, this.transform.position, Quaternion.identity));
+                manager.RemoveAshe(this.gameObject);
+
+            }
+        }
+    }
+
+    public override void AddNewMaterial()
+    {
+        GetComponent<MeshRenderer>().material = settings.GetRandomMaterial();
     }
 
 }

@@ -8,6 +8,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<GameObject> Planets;
     [SerializeField] List<GameObject> Trous;
 
+    public GameObject AshePrefab => ashePrefab;
+    [SerializeField] GameObject ashePrefab;
+    public GameObject PlanetPrefab => planetPrefab;
+    [SerializeField] GameObject planetPrefab;
+
     public Vector3 ScreenRange => screenRange;
     Vector3 screenRange;
 
@@ -22,6 +27,18 @@ public class GameManager : MonoBehaviour
         screenRange = EndPoint - StartPoint;
     }
 
+    public void AddPlanet(GameObject planet)
+    {
+        Planets.Add(planet);
+    }
+
+    public void RemovePlanet(GameObject toRm)
+    {
+        Planets.Remove(toRm);
+        Destroy(toRm);
+
+    }
+
     public void AddAshes(GameObject ash)
     {
         Ashes.Add(ash);
@@ -33,6 +50,11 @@ public class GameManager : MonoBehaviour
         Ashes.Remove(toRm);
         Destroy(toRm);
         DebugUI.Instance.UpdateAshes(Ashes.Count);
+    }
+
+    public GameObject GetPlanetPrefab()
+    {
+        return PlanetPrefab;
     }
 
     //SINGLETON________________________________________________________________________________________________

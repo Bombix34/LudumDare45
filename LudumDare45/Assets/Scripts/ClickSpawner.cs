@@ -6,17 +6,18 @@ public class ClickSpawner : MonoBehaviour
 {
     public GameObject particlePrefab;
 
-    void Start()
-    {
-        
-    }
+    [SerializeField] SpawnSettings settings;
+    private float chronoSpawn = 0f;
+
 
     void Update()
     {
-        if(Input.GetMouseButton(0))
+        chronoSpawn -= Time.fixedDeltaTime;
+        if(Input.GetMouseButton(0)&&chronoSpawn<=0)
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,20f));
-            GameManager.Instance.AddAshes(Instantiate(particlePrefab, mousePosition, Quaternion.identity));
+            GameManager.Instance.AddAshes(Instantiate(GameManager.Instance.AshePrefab, mousePosition, Quaternion.identity));
+            chronoSpawn = settings.timeBetweenDustSpawn;
         }
     }
 }

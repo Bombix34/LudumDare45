@@ -23,6 +23,7 @@ public abstract class SpaceElement : MonoBehaviour
     }
 
     public abstract void CheckNextStep();
+    public abstract void AddNewMaterial();
 
     protected void OnBecameInvisible()
     {

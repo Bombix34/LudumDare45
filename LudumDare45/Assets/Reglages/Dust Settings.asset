@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193799c032c221c48ae10b795ea1b737, type: 3}
   m_Name: Dust Settings
   m_EditorClassIdentifier: 
+  asheMaterials:
+  - {fileID: 2100000, guid: 9e325b56593aa2b4ab5170ea2ea1dcb6, type: 2}
+  - {fileID: 2100000, guid: 2190e2977fd90664e8ab56e07fe1acd0, type: 2}
+  - {fileID: 2100000, guid: c627d019f4ea43f4a816d0661f825197, type: 2}
   SizeOnSpawn:
     minValue: 0.00272911
     maxValue: 0.0060173874
@@ -21,4 +25,6 @@ MonoBehaviour:
   SpeedOnSpawn:
     minValue: 1.0586188
     maxValue: 6.217108
+  chanceToTransform: 40.8
+  massToTransform: 6
   maxSizeAshes: 0.025

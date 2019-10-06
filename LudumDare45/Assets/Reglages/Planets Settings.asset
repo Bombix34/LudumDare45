@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510a21c8170b9b4458f641c206378de5, type: 3}
+  m_Name: Planets Settings
+  m_EditorClassIdentifier: 
+  planetMaterials:
+  - {fileID: 2100000, guid: 9a2453da29055fd448bd7f3780d0e2a9, type: 2}
+  - {fileID: 2100000, guid: 199b25e0cf1490448953932ea4bcf506, type: 2}
+  - {fileID: 2100000, guid: e5cae57db71b7674182be8b157d0e437, type: 2}
+  - {fileID: 2100000, guid: cd98c62c492f35a47b3f24d8c6788c1a, type: 2}
+  - {fileID: 2100000, guid: 03c7b7d96018dec42b607a1f54841797, type: 2}
+  - {fileID: 2100000, guid: a84272dfc3139024b955f4d7e8a5796d, type: 2}
+  - {fileID: 2100000, guid: 7d8de64552d0e1b4b81743b12a7128ab, type: 2}
+  - {fileID: 2100000, guid: a4b96142db432244ab62f59554ee2963, type: 2}
+  - {fileID: 2100000, guid: f52b03318cbe8cc47b609e36ce89cc8f, type: 2}
+  - {fileID: 2100000, guid: a9fd1f7d498258d449f05491bb04064d, type: 2}
+  SizeOnSpawn:
+    minValue: 0.033452477
+    maxValue: 0.06433168
+  MassOnSpawn:
+    minValue: 85.73268
+    maxValue: 235.76488
+  SpeedOnSpawn:
+    minValue: 0.7646428
+    maxValue: 1.7416865
+  maxSizePlanet: 0.08
