@@ -32,7 +32,7 @@ public class StarSettings : ScriptableObject
     [Header("Réglages Passage en trou noir")]
     [Range(0f, 100f)]
     public float chanceToTransform = 50f;
-    [Range(10f, 1000f)]
+    [Range(10f, 10000f)]
     public float massToTransform = 15f;
 
     [Header("Réglages gravité")]

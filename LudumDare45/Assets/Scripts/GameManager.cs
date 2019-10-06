@@ -44,6 +44,11 @@ public class GameManager : Singleton<GameManager>
     {
         Planets.Add(planet);
         DebugUI.Instance.UpdatePlanets(Planets.Count);
+
+        if (Planets.Count >= 1 && MusicManager.Instance.MatchPhase(MusicManager.Phase.manyDust))
+            MusicManager.Instance.PlayNextPhase();
+        else if (Planets.Count >= 10 && MusicManager.Instance.MatchPhase(MusicManager.Phase.firstPlanet))
+            MusicManager.Instance.PlayNextPhase();
     }
 
     public void RemovePlanet(GameObject toRm)
@@ -57,6 +62,11 @@ public class GameManager : Singleton<GameManager>
     {
         Ashes.Add(ash);
         DebugUI.Instance.UpdateAshes(Ashes.Count);
+
+        if (Ashes.Count >= 1 && MusicManager.Instance.MatchPhase(MusicManager.Phase.nothing))
+            MusicManager.Instance.PlayNextPhase();
+        else if(Ashes.Count>=50 && MusicManager.Instance.MatchPhase(MusicManager.Phase.firstDust))
+            MusicManager.Instance.PlayNextPhase();
     }
 
     public void RemoveAshe(GameObject toRm)
@@ -70,6 +80,11 @@ public class GameManager : Singleton<GameManager>
     {
         Stars.Add(star);
         DebugUI.Instance.UpdateStars(Stars.Count);
+
+        if (Stars.Count >= 1 && MusicManager.Instance.MatchPhase(MusicManager.Phase.manyPlanet))
+            MusicManager.Instance.PlayNextPhase();
+        else if (Stars.Count >= 3 && MusicManager.Instance.MatchPhase(MusicManager.Phase.firstSun))
+            MusicManager.Instance.PlayNextPhase();
     }
     public void RemoveStar(GameObject toRm)
     {
@@ -82,6 +97,9 @@ public class GameManager : Singleton<GameManager>
     {
         Holes.Add(hole);
         DebugUI.Instance.UpdateHoles(Holes.Count);
+
+        if (Holes.Count >= 1 && MusicManager.Instance.MatchPhase(MusicManager.Phase.manySun))
+            MusicManager.Instance.PlayNextPhase();
     }
     public void RemoveHole(GameObject toRm)
     {

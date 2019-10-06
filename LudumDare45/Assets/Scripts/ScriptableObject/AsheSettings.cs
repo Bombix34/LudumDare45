@@ -24,7 +24,7 @@ public class AsheSettings :ScriptableObject
     [Header("Réglages Passage en planète")]
     [Range(0f,100f)]
     public float chanceToTransform = 50f;
-    [Range(1f, 100f)]
+    [Range(1f, 10000f)]
     public float massToTransform = 15f;
 
     [Header("Autres")]

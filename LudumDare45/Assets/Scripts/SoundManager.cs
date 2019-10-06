@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : Singleton<SoundManager>
 {
 
     public AudioSource[] audiosources;
-
-    public SoundDatabase baseSounds;
+    public PitchVolumeAudio noteSound;                  //0
+    public PitchVolumeAudio repulsionCreate;            //1
+    public PitchVolumeAudio repulsionDestroy;           //2
+    public PitchVolumeAudio attractionCreate;            //3
+    public PitchVolumeAudio attractionDestroy;           //4
 
     void Start()
     {
@@ -19,7 +22,24 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(int sound)
     {
-        GetAudioSourceAvailable(baseSounds.audioDatabase[sound]);
+        switch(sound)
+        {
+            case 0:
+                noteSound.Play(GetAudioSourceAvailable());
+                break;
+            case 1:
+                repulsionCreate.Play(GetAudioSourceAvailable());
+                break;
+            case 2:
+                repulsionDestroy.Play(GetAudioSourceAvailable());
+                break;
+            case 3:
+                attractionCreate.Play(GetAudioSourceAvailable());
+                break;
+            case 4:
+                attractionDestroy.Play(GetAudioSourceAvailable());
+                break;
+        }
     }
 
     public void GetAudioSourceAvailable(AudioClip clip)
@@ -34,5 +54,17 @@ public class SoundManager : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public AudioSource GetAudioSourceAvailable()
+    {
+        for (int i = 0; i < audiosources.Length; i++)
+        {
+            if (!audiosources[i].isPlaying)
+            {
+                return audiosources[i];
+            }
+        }
+        return null;
     }
 }

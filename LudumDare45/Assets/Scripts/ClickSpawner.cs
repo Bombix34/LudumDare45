@@ -9,6 +9,13 @@ public class ClickSpawner : MonoBehaviour
     [SerializeField] SpawnSettings settings;
     private float chronoSpawn = 0f;
 
+    private float chronoNoteSound=0f;
+    public float maxChrono=0.2f;
+
+    private void Start()
+    {
+        
+    }
 
     void Update()
     {
@@ -18,6 +25,15 @@ public class ClickSpawner : MonoBehaviour
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,20f));
             GameManager.Instance.AddAshes(Instantiate(GameManager.Instance.AshePrefab, mousePosition, Quaternion.identity));
             chronoSpawn = settings.timeBetweenDustSpawn;
+            if(chronoNoteSound<=0)
+            {
+                SoundManager.Instance.PlaySound(0);
+                chronoNoteSound = maxChrono;
+            }
+            else
+            {
+                chronoNoteSound -= Time.fixedDeltaTime;
+            }
         }
 
 
@@ -59,9 +75,6 @@ public class ClickSpawner : MonoBehaviour
             }
 
         }
-
-
-
     }
 
     private GameObject getGravityModifierOverMouse()

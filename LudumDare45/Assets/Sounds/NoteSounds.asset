@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf35d8fc3f884871bba8933d5b9d6cd, type: 3}
+  m_Name: NoteSounds
+  m_EditorClassIdentifier: 
+  loop: 0
+  clips:
+  - {fileID: 8300000, guid: dd911dfc4c5172d44a40eb8e75038d86, type: 3}
+  - {fileID: 8300000, guid: a7df9c94e78b1e34c80ebe64238a8664, type: 3}
+  - {fileID: 8300000, guid: 166b72055713fd348ac3c8a50ff7162b, type: 3}
+  - {fileID: 8300000, guid: f6b13723b5d913e46af2bcfb14d4fd5a, type: 3}
+  - {fileID: 8300000, guid: b6b75965d17af7e4ab6c7ac8135f613a, type: 3}
+  - {fileID: 8300000, guid: 2f6d053128809fd48a91c6e3b7b02fbb, type: 3}
+  - {fileID: 8300000, guid: f76e83b6f7e113f4a803bcbad0a2214c, type: 3}
+  - {fileID: 8300000, guid: 835d44e660a1a03418a14adca9f991a2, type: 3}
+  - {fileID: 8300000, guid: 0344ba948810b99478358c64c23b688c, type: 3}
+  - {fileID: 8300000, guid: db277917263661541a649693a982cd3f, type: 3}
+  volume:
+    minValue: 0.21476074
+    maxValue: 0.4250156
+  pitch:
+    minValue: 1.0040765
+    maxValue: 1.0040765
