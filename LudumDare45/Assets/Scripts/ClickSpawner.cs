@@ -29,9 +29,9 @@ public class ClickSpawner : MonoBehaviour
             if (gravityModifier == null)
             {
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 20f));
-                gravityModifier = Instantiate(GameManager.Instance.GravityModifierPrefab, mousePosition, Quaternion.identity);
+                gravityModifier = ZoneGraviteLogic.createZoneRefraction(mousePosition);
             }
-            gravityModifier.GetComponent<GravityModifier>().AddForce();
+            //gravityModifier.GetComponent<GravityModifier>().AddForce();
         }
 
         // mouse wheel down
@@ -42,9 +42,9 @@ public class ClickSpawner : MonoBehaviour
             if (gravityModifier == null)
             {
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 20f));
-                gravityModifier = Instantiate(GameManager.Instance.GravityModifierPrefab, mousePosition, Quaternion.identity);
+                gravityModifier = ZoneGraviteLogic.createZoneAttraction(mousePosition);
             }
-            gravityModifier.GetComponent<GravityModifier>().RemoveForce();
+            //gravityModifier.GetComponent<GravityModifier>().RemoveForce();
         }
 
         // mouse middle button
@@ -55,7 +55,7 @@ public class ClickSpawner : MonoBehaviour
             GameObject gravityModifier = getGravityModifierOverMouse();
             if(gravityModifier != null)
             {
-                Destroy(gravityModifier);
+                ZoneGraviteLogic.destroyZone(gravityModifier);
             }
 
         }
@@ -74,7 +74,6 @@ public class ClickSpawner : MonoBehaviour
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, layerMask))
         {
-            print(hit.collider.name);
             return hit.collider.gameObject.transform.parent.gameObject;
         }
 
