@@ -94,4 +94,9 @@ public class Planet : SpaceElement
     {
         GetComponent<MeshRenderer>().material = settings.GetRandomMaterial();
     }
+
+    public void OnDestroy()
+    {
+        ScreenShake.instance.StartScreenShake(GetComponent<Rigidbody2D>().mass);
+    }
 }

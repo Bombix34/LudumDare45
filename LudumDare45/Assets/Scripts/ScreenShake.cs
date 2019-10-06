@@ -7,8 +7,10 @@ public class ScreenShake : MonoBehaviour
 
     static public ScreenShake instance;
 
-    public float powerScreenShake = 1;
-    public float timeScreenShake = 1;
+    [SerializeField] float coefPowerScreenshake = 0.0002f;
+    [SerializeField] float timeScreenShake = 0.5f;
+
+    private float powerScreenShake = 1;
 
     private bool flagCoroutine;
     private Coroutine screenShakeCo;
@@ -45,7 +47,7 @@ public class ScreenShake : MonoBehaviour
     }*/
 
 
-    public void StartScreenShake(float power, float time)
+    public void StartScreenShake(float power)
     {
         // there already is an instance of screenShake running, we check if the power of the last coroutine is lower than the new one
         if (flagCoroutine)
@@ -55,12 +57,12 @@ public class ScreenShake : MonoBehaviour
                 // if so, we start a new screenshake wich is more powerful than the older one
                 StopCoroutine(screenShakeCo);
                 Camera.main.transform.position = new Vector3(0, 0, Camera.main.transform.position.z);
-                initializeCoroutine(power, time);
+                initializeCoroutine(power, timeScreenShake);
             }
         }
         else
         {
-            initializeCoroutine(power, time);
+            initializeCoroutine(power, timeScreenShake);
         }
     }
 
@@ -84,17 +86,18 @@ public class ScreenShake : MonoBehaviour
     {
         this.powerScreenShake = power;
         this.timeScreenShake = time;
-        screenShakeCo = StartCoroutine(ScreenShakeCoroutine());
+        screenShakeCo = StartCoroutine(ScreenShakeCoroutine(powerScreenShake));
     }
 
-    private IEnumerator ScreenShakeCoroutine()
+    private IEnumerator ScreenShakeCoroutine(float power)
     {
+        power *= coefPowerScreenshake;
         flagCoroutine = true;
         float countdown = 0;
         while (countdown < timeScreenShake)
         {
-            float x = Random.Range(-powerScreenShake, powerScreenShake);
-            float y = Random.Range(-powerScreenShake, powerScreenShake);
+            float x = Random.Range(-power, power);
+            float y = Random.Range(-power, power);
 
             Camera.main.transform.position = new Vector3(x, y, Camera.main.transform.position.z);
 
