@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -284,7 +284,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 7.68e-43, y: 1.1976461e-23, z: 4.5905e-41, w: 1.1975792e-23}
+  m_BoundingSphereOverride: {x: 5, y: 5, z: -3, w: 5}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -440,6 +440,18 @@ PrefabInstance:
       propertyPath: starPrefab
       value: 
       objectReference: {fileID: 1575071636865238332, guid: 912590a18a5d6ce44a8da2e103dae2bc,
+        type: 3}
+    - target: {fileID: 5131311430329615812, guid: fbb86acc0ccc15f4cab584fcb492c658,
+        type: 3}
+      propertyPath: zoneAttrationPrefab
+      value: 
+      objectReference: {fileID: 2671177529242657154, guid: c4755bc4dc3e044489c3ac8042e9ff4a,
+        type: 3}
+    - target: {fileID: 5131311430329615812, guid: fbb86acc0ccc15f4cab584fcb492c658,
+        type: 3}
+      propertyPath: zoneRefractionPrefab
+      value: 
+      objectReference: {fileID: 2671177529242657154, guid: 7a896d107f10a42fca048685c473f592,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbb86acc0ccc15f4cab584fcb492c658, type: 3}
