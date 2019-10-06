@@ -36,13 +36,13 @@ public class StarSettings : ScriptableObject
     public float massToTransform = 15f;
 
     [Header("Réglages gravité")]
-    [Range(1f, 30f)]
+    [Range(1f, 100f)]
     public float gravityRange = 16f;
-    [Range(-1000f, -1f)]
+    [Range(-10000f, -1f)]
     public  float gravityOnAshe = -40f;
-    [Range(-1000f, -1f)]
+    [Range(-10000f, -1f)]
     public  float gravityOnPlanet = -300f;
-    [Range(-1500f, -1f)]
+    [Range(-15000f, -1f)]
     public float gravityOnStar = -750f;
 
     [Header("Autres")]

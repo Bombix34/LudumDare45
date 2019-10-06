@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coefPowerScreenshake: 0.0001
+  timeScreenShake: 0.5
 --- !u!1 &163299809
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +229,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &693998620
 PrefabInstance:
