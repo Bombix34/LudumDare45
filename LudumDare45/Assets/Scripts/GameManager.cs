@@ -20,8 +20,10 @@ public class GameManager : Singleton<GameManager>
     public GameObject HolePrefab => holePrefab;
     [SerializeField] GameObject holePrefab;
 
-    public GameObject GravityModifierPrefab => gravityModifierPrefab;
-    [SerializeField] GameObject gravityModifierPrefab;
+    public GameObject ZoneAttrationPrefab => zoneAttrationPrefab;
+    [SerializeField] GameObject zoneAttrationPrefab;
+    public GameObject ZoneRefractionPrefab => zoneRefractionPrefab;
+    [SerializeField] GameObject zoneRefractionPrefab;
 
     public Vector3 ScreenRange => screenRange;
     Vector3 screenRange;
