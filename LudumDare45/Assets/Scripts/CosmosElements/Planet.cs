@@ -57,7 +57,6 @@ public class Planet : SpaceElement
 
     public override void CheckNextStep()
     {
-        throw new System.NotImplementedException();
     }
 
     public override void AddNewMaterial()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 { 
     [SerializeField] List<GameObject> Ashes;
     [SerializeField] List<GameObject> Planets;
@@ -30,13 +30,14 @@ public class GameManager : MonoBehaviour
     public void AddPlanet(GameObject planet)
     {
         Planets.Add(planet);
+        DebugUI.Instance.UpdatePlanets(Planets.Count);
     }
 
     public void RemovePlanet(GameObject toRm)
     {
         Planets.Remove(toRm);
         Destroy(toRm);
-
+        DebugUI.Instance.UpdatePlanets(Planets.Count);
     }
 
     public void AddAshes(GameObject ash)
@@ -57,32 +58,4 @@ public class GameManager : MonoBehaviour
         return PlanetPrefab;
     }
 
-    //SINGLETON________________________________________________________________________________________________
-
-    private static GameManager s_Instance = null;
-
-    // This defines a static instance property that attempts to find the manager object in the scene and
-    // returns it to the caller.
-    public static GameManager Instance
-    {
-        get
-        {
-            if (s_Instance == null)
-            {
-                // This is where the magic happens.
-                //  FindObjectOfType(...) returns the first AManager object in the scene.
-                s_Instance = FindObjectOfType(typeof(GameManager)) as GameManager;
-            }
-
-            // If it is still null, create a new instance
-            if (s_Instance == null)
-            {
-                Debug.Log("error");
-                GameObject obj = new GameObject("Error");
-                s_Instance = obj.AddComponent(typeof(GameManager)) as GameManager;
-            }
-
-            return s_Instance;
-        }
-    }
 }
