@@ -22,6 +22,13 @@ public class PlanetSettings : ScriptableObject
     public RangedFloat SpeedOnSpawn;
 
 
+    [Header("Réglages Passage en étoile")]
+    [Range(0f, 100f)]
+    public float chanceToTransform = 50f;
+    [Range(1f, 1000f)]
+    public float massToTransform = 15f;
+
+
     [Header("Autres")]
     [Range(0.01f, 1f)]
     public float maxSizePlanet = 0.3f;

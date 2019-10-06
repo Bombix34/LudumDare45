@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 6194204397581028597}
   - component: {fileID: 7387887006508108172}
   - component: {fileID: 4747664029457514579}
-  m_Layer: 0
-  m_Name: Ashe
+  m_Layer: 8
+  m_Name: Dust
   m_TagString: Ashe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

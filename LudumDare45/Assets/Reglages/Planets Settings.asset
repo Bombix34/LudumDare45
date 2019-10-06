@@ -32,4 +32,6 @@ MonoBehaviour:
   SpeedOnSpawn:
     minValue: 0.7646428
     maxValue: 1.7416865
+  chanceToTransform: 66.9
+  massToTransform: 500
   maxSizePlanet: 0.08

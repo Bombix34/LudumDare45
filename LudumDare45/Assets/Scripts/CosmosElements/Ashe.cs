@@ -39,16 +39,6 @@ public class Ashe : SpaceElement
                 GameManager.Instance.RemoveAshe(other.gameObject);
                 CheckNextStep();
             }
-            else
-            {
-                //other.GetComponent<Rigidbody2D>().velocity+=(body.velocity*0.5f);
-                float newSize = transform.localScale.x + other.transform.localScale.x;
-                if (newSize > settings.maxSizeAshes)
-                    newSize = settings.maxSizeAshes;
-                other.transform.localScale = new Vector3(newSize, newSize, newSize);
-                other.GetComponent<Rigidbody2D>().mass+=body.mass;
-                GameManager.Instance.RemoveAshe(this.gameObject);
-            }
         }
     }
 
@@ -62,7 +52,6 @@ public class Ashe : SpaceElement
                 GameManager manager = GameManager.Instance;
                 manager.AddPlanet(Instantiate(manager.PlanetPrefab, this.transform.position, Quaternion.identity));
                 manager.RemoveAshe(this.gameObject);
-
             }
         }
     }

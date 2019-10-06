@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Planet : SpaceElement
+public class Star : SpaceElement
 {
-    [SerializeField] PlanetSettings settings;
+    [SerializeField] StarSettings settings;
+
+    [SerializeField] Light starLight;
+    float lightIntensity;
 
     protected override void Awake()
     {
@@ -15,6 +18,7 @@ public class Planet : SpaceElement
         transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
         //transform.LookAt
         body.MoveRotation(Random.Range(0f, 360f));
+        lightIntensity = Random.Range(settings.lightIntensity.minValue, settings.lightIntensity.maxValue);
     }
 
     private void Start()
@@ -33,41 +37,46 @@ public class Planet : SpaceElement
         if (other.tag == "Ashe")
         {
             float newSize = transform.localScale.x + 0.01f;
-            if (newSize > settings.maxSizePlanet)
-              newSize = settings.maxSizePlanet;
+            if (newSize > settings.maxSizeStar)
+                newSize = settings.maxSizeStar;
             transform.localScale = new Vector3(newSize, newSize, newSize);
             body.mass += other.GetComponent<Rigidbody2D>().mass;
             GameManager.Instance.RemoveAshe(other.gameObject);
             CheckNextStep();
         }
-        else if(other.tag=="Planet")
+        else if (other.tag == "Planet")
+        {
+            float newSize = transform.localScale.x + 0.01f;
+            if (newSize > settings.maxSizeStar)
+                newSize = settings.maxSizeStar;
+            transform.localScale = new Vector3(newSize, newSize, newSize);
+            body.mass += other.GetComponent<Rigidbody2D>().mass;
+            GameManager.Instance.RemovePlanet(other.gameObject);
+            CheckNextStep();
+        }
+        else if (other.tag == "Star")
         {
             Rigidbody2D otherbody = other.GetComponent<Rigidbody2D>();
-            if(otherbody.mass+other.transform.localScale.magnitude<body.mass+transform.localScale.magnitude)
+            if (otherbody.mass + other.transform.localScale.magnitude < body.mass + transform.localScale.magnitude)
             {
                 float newSize = transform.localScale.x + other.transform.localScale.x;
-                if (newSize > settings.maxSizePlanet)
-                    newSize = settings.maxSizePlanet;
+                if (newSize > settings.maxSizeStar)
+                    newSize = settings.maxSizeStar;
                 transform.localScale = new Vector3(newSize, newSize, newSize);
                 body.mass += other.GetComponent<Rigidbody2D>().mass;
-                GameManager.Instance.RemovePlanet(other.gameObject);
+                GameManager.Instance.RemoveStar(other.gameObject);
                 CheckNextStep();
             }
         }
     }
 
+    private void UpdateLightIntensity()
+    {
+        starLight.intensity = lightIntensity * (transform.localScale.magnitude * 10f);
+    }
+
     public override void CheckNextStep()
     {
-        if (body.mass >= settings.massToTransform)
-        {
-            float rand = Random.Range(0f, 1f);
-            if (rand < (settings.chanceToTransform / 100))
-            {
-                GameManager manager = GameManager.Instance;
-                manager.AddStar(Instantiate(manager.StarPrefab, this.transform.position, Quaternion.identity));
-                manager.RemovePlanet(this.gameObject);
-            }
-        }
     }
 
     public override void AddNewMaterial()

@@ -6,12 +6,16 @@ public class GameManager : Singleton<GameManager>
 { 
     [SerializeField] List<GameObject> Ashes;
     [SerializeField] List<GameObject> Planets;
+    [SerializeField] List<GameObject> Stars;
     [SerializeField] List<GameObject> Trous;
 
     public GameObject AshePrefab => ashePrefab;
     [SerializeField] GameObject ashePrefab;
     public GameObject PlanetPrefab => planetPrefab;
     [SerializeField] GameObject planetPrefab;
+
+    public GameObject StarPrefab => starPrefab;
+    [SerializeField] GameObject starPrefab;
 
     public Vector3 ScreenRange => screenRange;
     Vector3 screenRange;
@@ -20,6 +24,7 @@ public class GameManager : Singleton<GameManager>
     {
         Ashes = new List<GameObject>();
         Planets = new List<GameObject>();
+        Stars = new List<GameObject>();
         Trous = new List<GameObject>();
 
         Vector3 StartPoint = Camera.main.ScreenToWorldPoint(new Vector3(0f, 0f, 20f));
@@ -51,6 +56,18 @@ public class GameManager : Singleton<GameManager>
         Ashes.Remove(toRm);
         Destroy(toRm);
         DebugUI.Instance.UpdateAshes(Ashes.Count);
+    }
+
+    public void AddStar(GameObject star)
+    {
+        Stars.Add(star);
+        DebugUI.Instance.UpdateStars(Stars.Count);
+    }
+    public void RemoveStar(GameObject toRm)
+    {
+        Stars.Remove(toRm);
+        Destroy(toRm);
+        DebugUI.Instance.UpdateStars(Stars.Count);
     }
 
     public GameObject GetPlanetPrefab()

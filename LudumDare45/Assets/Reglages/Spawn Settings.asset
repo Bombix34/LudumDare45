@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08544142bd550b48b4d22fddad0736e, type: 3}
   m_Name: Spawn Settings
   m_EditorClassIdentifier: 
-  timeBetweenDustSpawn: 0.046
+  timeBetweenDustSpawn: 0
