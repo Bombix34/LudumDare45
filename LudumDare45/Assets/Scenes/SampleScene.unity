@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -284,7 +284,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: NaN, y: 1, z: 0.05, w: 0.4}
+  m_BoundingSphereOverride: {x: 7.68e-43, y: 1.1976461e-23, z: 4.5905e-41, w: 1.1975792e-23}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -435,18 +435,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5131311430329615812, guid: fbb86acc0ccc15f4cab584fcb492c658,
-        type: 3}
-      propertyPath: starPrefab
-      value: 
-      objectReference: {fileID: 2671177529242657154, guid: ab25200ff7aea5e46967c9cb8f4e192d,
-        type: 3}
-    - target: {fileID: 5131311430329615812, guid: fbb86acc0ccc15f4cab584fcb492c658,
-        type: 3}
-      propertyPath: gravityModifierPrefab
-      value: 
-      objectReference: {fileID: 364728800319484186, guid: e5fdd47022e256248af25275dd9cb691,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbb86acc0ccc15f4cab584fcb492c658, type: 3}
 --- !u!1001 &7379684763183207856

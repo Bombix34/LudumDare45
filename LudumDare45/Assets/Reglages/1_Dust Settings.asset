@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 193799c032c221c48ae10b795ea1b737, type: 3}
-  m_Name: Dust Settings
+  m_Name: 1_Dust Settings
   m_EditorClassIdentifier: 
   asheMaterials:
   - {fileID: 2100000, guid: 9e325b56593aa2b4ab5170ea2ea1dcb6, type: 2}

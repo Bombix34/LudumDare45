@@ -8,6 +8,7 @@ public class DebugUI : Singleton<DebugUI>
     [SerializeField] Text ashesArea;
     [SerializeField] Text planetsArea;
     [SerializeField] Text starsArea;
+    [SerializeField] Text holesArea;
 
     public void UpdateAshes(int nb)
     {
@@ -22,5 +23,10 @@ public class DebugUI : Singleton<DebugUI>
     public void UpdateStars(int nb)
     {
         starsArea.text = nb.ToString();
+    }
+
+    public void UpdateHoles(int nb)
+    {
+        holesArea.text = nb.ToString();
     }
 }

@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] List<GameObject> Ashes;
     [SerializeField] List<GameObject> Planets;
     [SerializeField] List<GameObject> Stars;
-    [SerializeField] List<GameObject> Trous;
+    [SerializeField] List<GameObject> Holes;
 
     public GameObject AshePrefab => ashePrefab;
     [SerializeField] GameObject ashePrefab;
@@ -16,6 +16,9 @@ public class GameManager : Singleton<GameManager>
 
     public GameObject StarPrefab => starPrefab;
     [SerializeField] GameObject starPrefab;
+
+    public GameObject HolePrefab => holePrefab;
+    [SerializeField] GameObject holePrefab;
 
     public GameObject GravityModifierPrefab => gravityModifierPrefab;
     [SerializeField] GameObject gravityModifierPrefab;
@@ -28,7 +31,7 @@ public class GameManager : Singleton<GameManager>
         Ashes = new List<GameObject>();
         Planets = new List<GameObject>();
         Stars = new List<GameObject>();
-        Trous = new List<GameObject>();
+        Holes = new List<GameObject>();
 
         Vector3 StartPoint = Camera.main.ScreenToWorldPoint(new Vector3(0f, 0f, 20f));
         Vector3 EndPoint = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 20f));
@@ -71,6 +74,18 @@ public class GameManager : Singleton<GameManager>
         Stars.Remove(toRm);
         Destroy(toRm);
         DebugUI.Instance.UpdateStars(Stars.Count);
+    }
+
+    public void AddHole(GameObject hole)
+    {
+        Holes.Add(hole);
+        DebugUI.Instance.UpdateHoles(Holes.Count);
+    }
+    public void RemoveHole(GameObject toRm)
+    {
+        Holes.Remove(toRm);
+        Destroy(toRm);
+        DebugUI.Instance.UpdateHoles(Holes.Count);
     }
 
     public GameObject GetPlanetPrefab()
