@@ -17,6 +17,9 @@ public class GameManager : Singleton<GameManager>
     public GameObject StarPrefab => starPrefab;
     [SerializeField] GameObject starPrefab;
 
+    public GameObject GravityModifierPrefab => gravityModifierPrefab;
+    [SerializeField] GameObject gravityModifierPrefab;
+
     public Vector3 ScreenRange => screenRange;
     Vector3 screenRange;
 

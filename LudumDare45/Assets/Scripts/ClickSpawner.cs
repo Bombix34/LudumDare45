@@ -19,5 +19,65 @@ public class ClickSpawner : MonoBehaviour
             GameManager.Instance.AddAshes(Instantiate(GameManager.Instance.AshePrefab, mousePosition, Quaternion.identity));
             chronoSpawn = settings.timeBetweenDustSpawn;
         }
+
+
+        // mouse wheel up
+        // add attraction force on gravity modifier
+        if(Input.mouseScrollDelta.y > 0)
+        {
+            GameObject gravityModifier = getGravityModifierOverMouse();
+            if (gravityModifier == null)
+            {
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 20f));
+                gravityModifier = Instantiate(GameManager.Instance.GravityModifierPrefab, mousePosition, Quaternion.identity);
+            }
+            gravityModifier.GetComponent<GravityModifier>().AddForce();
+        }
+
+        // mouse wheel down
+        // add refraction force on gravity modifier
+        if(Input.mouseScrollDelta.y < 0)
+        {
+            GameObject gravityModifier = getGravityModifierOverMouse();
+            if (gravityModifier == null)
+            {
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 20f));
+                gravityModifier = Instantiate(GameManager.Instance.GravityModifierPrefab, mousePosition, Quaternion.identity);
+            }
+            gravityModifier.GetComponent<GravityModifier>().RemoveForce();
+        }
+
+        // mouse middle button
+        // gravity modifier destruction
+        if (Input.GetMouseButtonDown(2))
+        {
+
+            GameObject gravityModifier = getGravityModifierOverMouse();
+            if(gravityModifier != null)
+            {
+                Destroy(gravityModifier);
+            }
+
+        }
+
+
+
+    }
+
+    private GameObject getGravityModifierOverMouse()
+    {
+        int layerMask = LayerMask.GetMask("GravityModifier");
+
+        Ray ray;
+        RaycastHit hit;
+
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit, layerMask))
+        {
+            print(hit.collider.name);
+            return hit.collider.gameObject.transform.parent.gameObject;
+        }
+
+        return null;
     }
 }
