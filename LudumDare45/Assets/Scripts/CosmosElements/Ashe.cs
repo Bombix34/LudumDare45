@@ -6,6 +6,12 @@ public class Ashe : SpaceElement
 {
     [SerializeField] AsheSettings settings;
 
+    UTimer timerAsheInvulnerable;
+
+    float timeInvulnerable = 0.5f;
+
+    bool IsInvulnerable = true;
+
     protected override void Awake()
     {
         float size = Random.Range(settings.SizeOnSpawn.minValue, settings.SizeOnSpawn.maxValue);
@@ -17,6 +23,12 @@ public class Ashe : SpaceElement
         body.MoveRotation(Random.Range(0f, 360f));
     }
 
+    protected void Start()
+    {
+        timerAsheInvulnerable = UTimer.Initialize(timeInvulnerable, this, becomeNotInvulnerable);
+        timerAsheInvulnerable.start();
+    }
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -24,6 +36,12 @@ public class Ashe : SpaceElement
 
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
+
+        if (IsInvulnerable)
+        {
+            return;
+        }
+
         GameObject other = collision.gameObject;
         if(other.tag=="Ashe")
         {
@@ -59,6 +77,11 @@ public class Ashe : SpaceElement
     public override void AddNewMaterial()
     {
         GetComponent<MeshRenderer>().material = settings.GetRandomMaterial();
+    }
+
+    private void becomeNotInvulnerable()
+    {
+        IsInvulnerable = false;
     }
 
 }
