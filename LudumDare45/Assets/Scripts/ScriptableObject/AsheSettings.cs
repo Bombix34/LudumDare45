@@ -30,6 +30,8 @@ public class AsheSettings :ScriptableObject
     [Header("Autres")]
     [Range(0.01f, 0.3f)]
     public float maxSizeAshes = 0.03f;
+    [Range(0.1f, 2f)]
+    public float AddMassMultiplicator = 1f;
 
 
 }

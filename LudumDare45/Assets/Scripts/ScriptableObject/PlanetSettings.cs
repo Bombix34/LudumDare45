@@ -37,4 +37,6 @@ public class PlanetSettings : ScriptableObject
     [Header("Autres")]
     [Range(0.01f, 1f)]
     public float maxSizePlanet = 0.3f;
+    [Range(0.1f, 2f)]
+    public float AddMassMultiplicator = 1f;
 }

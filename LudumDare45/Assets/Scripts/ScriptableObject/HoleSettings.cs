@@ -31,5 +31,7 @@ public class HoleSettings : ScriptableObject
     [Header("Autres")]
     [Range(1f, 50f)]
     public float maxSizeHole = 1f;
+    [Range(0.1f, 2f)]
+    public float AddMassMultiplicator = 1f;
 
 }

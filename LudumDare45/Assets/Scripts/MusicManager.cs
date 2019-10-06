@@ -78,11 +78,11 @@ public class MusicManager : Singleton<MusicManager>
         }
         else if(currentPhase==Phase.firstBlackHole)
         {
-            currentPhase = Phase.manyBlackHole;
-        }
-        else if(currentPhase==Phase.manyBlackHole)
-        {
             currentPhase = Phase.end;
+            Scene12.Play();
+            StartCoroutine(FadeInEffect(Scene12, musicInitVolume, 0.5f));
+            StartCoroutine(FadeOutEffect(Scene8, 0f, 1f));
+            StartCoroutine(FadeOutEffect(Scene9, 0f, 1f));
         }
     }
 

@@ -50,7 +50,7 @@ public class Hole : SpaceElement
                 newSize = settings.maxSizeHole;
             transform.localScale = new Vector3(newSize, transform.localScale.y, newSize);
             UpdateGravity();
-            body.mass += other.GetComponent<Rigidbody2D>().mass;
+            body.mass += (other.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
             GameManager.Instance.RemoveAshe(other.gameObject);
             CheckNextStep();
         }
@@ -61,7 +61,7 @@ public class Hole : SpaceElement
                 newSize = settings.maxSizeHole;
             transform.localScale = new Vector3(newSize, transform.localScale.y, newSize);
             UpdateGravity();
-            body.mass += other.GetComponent<Rigidbody2D>().mass;
+            body.mass += (other.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
             GameManager.Instance.RemovePlanet(other.gameObject);
             CheckNextStep();
         }
@@ -72,7 +72,7 @@ public class Hole : SpaceElement
                 newSize = settings.maxSizeHole;
             transform.localScale = new Vector3(newSize, transform.localScale.y, newSize);
             UpdateGravity();
-            body.mass += other.GetComponent<Rigidbody2D>().mass;
+            body.mass += (other.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
             GameManager.Instance.RemoveStar(other.gameObject);
             CheckNextStep();
         }
@@ -86,7 +86,7 @@ public class Hole : SpaceElement
                     newSize = settings.maxSizeHole;
                 transform.localScale = new Vector3(newSize, newSize, newSize);
                 UpdateGravity();
-                body.mass += other.GetComponent<Rigidbody2D>().mass;
+                body.mass += (other.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
                 GameManager.Instance.RemoveHole(other.gameObject);
                 CheckNextStep();
             }
@@ -104,6 +104,8 @@ public class Hole : SpaceElement
         planetArea.GetComponent<CircleCollider2D>().radius = (settings.gravityRange * transform.localScale.x) / 3.5433f;
         starArea.GetComponent<CircleCollider2D>().radius = (settings.gravityRange * transform.localScale.x) / 3.5433f;
         starArea.GetComponent<CircleCollider2D>().radius = (settings.gravityRange * transform.localScale.x) / 3.5433f;
+
+       // GetComponent<CircleCollider2D>().radius = 0.15f * transform.localScale.x;
     }
 
     public override void CheckNextStep()

@@ -53,7 +53,7 @@ public class Ashe : SpaceElement
                 if (newSize > settings.maxSizeAshes)
                     newSize = settings.maxSizeAshes;
                 transform.localScale = new Vector3(newSize, newSize, newSize);
-                body.mass += other.GetComponent<Rigidbody2D>().mass;
+                body.mass +=( other.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
                 GameManager.Instance.RemoveAshe(other.gameObject);
                 CheckNextStep();
             }

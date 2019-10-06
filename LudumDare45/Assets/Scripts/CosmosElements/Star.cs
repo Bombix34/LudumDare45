@@ -68,7 +68,7 @@ public class Star : SpaceElement
             transform.localScale = new Vector3(newSize, newSize, newSize);
             UpdateParticlesSize();
             UpdateGravity();
-            body.mass += other.GetComponent<Rigidbody2D>().mass;
+            body.mass += (other.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
             GameManager.Instance.RemoveAshe(other.gameObject);
             CheckNextStep();
         }
@@ -80,7 +80,7 @@ public class Star : SpaceElement
             transform.localScale = new Vector3(newSize, newSize, newSize);
             UpdateParticlesSize();
             UpdateGravity();
-            body.mass += other.GetComponent<Rigidbody2D>().mass;
+            body.mass += (other.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
             GameManager.Instance.RemovePlanet(other.gameObject);
             CheckNextStep();
         }
@@ -95,7 +95,7 @@ public class Star : SpaceElement
                 transform.localScale = new Vector3(newSize, newSize, newSize);
                 UpdateParticlesSize();
                 UpdateGravity();
-                body.mass += other.GetComponent<Rigidbody2D>().mass;
+                body.mass += (other.GetComponent<Rigidbody2D>().mass*settings.AddMassMultiplicator);
                 GameManager.Instance.RemoveStar(other.gameObject);
                 CheckNextStep();
             }
@@ -152,6 +152,7 @@ public class Star : SpaceElement
     }
 
     void UpdateGravity()
+        //updte gravity et scale
     {
         asheArea.forceMagnitude = settings.gravityOnAshe;
         planetArea.forceMagnitude = settings.gravityOnPlanet;
@@ -160,6 +161,8 @@ public class Star : SpaceElement
         asheArea.GetComponent<CircleCollider2D>().radius = settings.gravityRange*transform.localScale.x;
         planetArea.GetComponent<CircleCollider2D>().radius = settings.gravityRange * transform.localScale.x;
         starArea.GetComponent<CircleCollider2D>().radius = settings.gravityRange * transform.localScale.x;
+
+        //GetComponent<CircleCollider2D>().radius =3.2f * transform.localScale.x;
     }
 
     public override void AddNewMaterial()

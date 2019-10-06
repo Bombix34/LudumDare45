@@ -56,7 +56,8 @@ public class Planet : SpaceElement
             if (newSize > settings.maxSizePlanet)
               newSize = settings.maxSizePlanet;
             transform.localScale = new Vector3(newSize, newSize, newSize);
-            body.mass += other.GetComponent<Rigidbody2D>().mass;
+            UpdateScale();
+            body.mass += (other.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
             GameManager.Instance.RemoveAshe(other.gameObject);
             CheckNextStep();
         }
@@ -69,7 +70,8 @@ public class Planet : SpaceElement
                 if (newSize > settings.maxSizePlanet)
                     newSize = settings.maxSizePlanet;
                 transform.localScale = new Vector3(newSize, newSize, newSize);
-                body.mass += other.GetComponent<Rigidbody2D>().mass;
+                UpdateScale();
+                body.mass +=( other.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
                 GameManager.Instance.RemovePlanet(other.gameObject);
                 CheckNextStep();
             }
@@ -88,6 +90,11 @@ public class Planet : SpaceElement
                 manager.RemovePlanet(this.gameObject);
             }
         }
+    }
+
+    public void UpdateScale()
+    {
+        //GetComponent<CircleCollider2D>().radius = 5 * transform.localScale.x;
     }
 
     public override void AddNewMaterial()

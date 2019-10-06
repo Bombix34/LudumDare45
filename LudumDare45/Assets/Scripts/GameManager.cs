@@ -40,6 +40,19 @@ public class GameManager : Singleton<GameManager>
         screenRange = EndPoint - StartPoint;
     }
 
+    private void Update()
+    {
+        CheckEndCondition();
+        UpdateScreenSize();
+    }
+
+    void UpdateScreenSize()
+    {
+        Vector3 StartPoint = Camera.main.ScreenToWorldPoint(new Vector3(0f, 0f, 20f));
+        Vector3 EndPoint = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 20f));
+        screenRange = EndPoint - StartPoint;
+    }
+
     public void AddPlanet(GameObject planet)
     {
         Planets.Add(planet);
@@ -65,7 +78,7 @@ public class GameManager : Singleton<GameManager>
 
         if (Ashes.Count >= 1 && MusicManager.Instance.MatchPhase(MusicManager.Phase.nothing))
             MusicManager.Instance.PlayNextPhase();
-        else if(Ashes.Count>=50 && MusicManager.Instance.MatchPhase(MusicManager.Phase.firstDust))
+        else if(Ashes.Count>=100 && MusicManager.Instance.MatchPhase(MusicManager.Phase.firstDust))
             MusicManager.Instance.PlayNextPhase();
     }
 
@@ -86,6 +99,7 @@ public class GameManager : Singleton<GameManager>
         else if (Stars.Count >= 3 && MusicManager.Instance.MatchPhase(MusicManager.Phase.firstSun))
             MusicManager.Instance.PlayNextPhase();
     }
+
     public void RemoveStar(GameObject toRm)
     {
         Stars.Remove(toRm);
@@ -101,11 +115,26 @@ public class GameManager : Singleton<GameManager>
         if (Holes.Count >= 1 && MusicManager.Instance.MatchPhase(MusicManager.Phase.manySun))
             MusicManager.Instance.PlayNextPhase();
     }
+
     public void RemoveHole(GameObject toRm)
     {
         Holes.Remove(toRm);
         Destroy(toRm);
         DebugUI.Instance.UpdateHoles(Holes.Count);
+    }
+
+    public void CheckEndCondition()
+    {
+        if(Holes.Count>=1&&Stars.Count==0&&Planets.Count==0&&Ashes.Count<=5)
+        {
+            //GAME FEEL / 20 
+            MusicManager.Instance.PlayNextPhase();
+            print("END");
+            foreach (var item in Holes)
+                Destroy(item);
+            foreach (var item in Ashes)
+                Destroy(item);
+        }
     }
 
     public GameObject GetPlanetPrefab()

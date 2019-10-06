@@ -49,6 +49,9 @@ public class StarSettings : ScriptableObject
     [Range(0.01f, 5f)]
     public  float maxSizeStar = 1f;
 
+    [Range(0.1f, 2f)]
+    public float AddMassMultiplicator = 1f;
+
     [MinMaxRange(1f, 100f)]
     public RangedFloat lightIntensity;
 
