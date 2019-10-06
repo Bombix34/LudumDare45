@@ -173,4 +173,9 @@ public class Star : SpaceElement
         medium,
         big
     }
+
+    public void OnDestroy()
+    {
+        ScreenShake.instance.StartScreenShake(GetComponent<Rigidbody2D>().mass);
+    }
 }

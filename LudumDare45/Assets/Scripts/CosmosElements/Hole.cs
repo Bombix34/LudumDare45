@@ -48,7 +48,7 @@ public class Hole : SpaceElement
             float newSize = transform.localScale.x + 0.05f;
             if (newSize > settings.maxSizeHole)
                 newSize = settings.maxSizeHole;
-            transform.localScale = new Vector3(newSize, newSize, newSize);
+            transform.localScale = new Vector3(newSize, transform.localScale.y, newSize);
             UpdateGravity();
             body.mass += other.GetComponent<Rigidbody2D>().mass;
             GameManager.Instance.RemoveAshe(other.gameObject);
@@ -59,7 +59,7 @@ public class Hole : SpaceElement
             float newSize = transform.localScale.x + 0.1f;
             if (newSize > settings.maxSizeHole)
                 newSize = settings.maxSizeHole;
-            transform.localScale = new Vector3(newSize, newSize, newSize);
+            transform.localScale = new Vector3(newSize, transform.localScale.y, newSize);
             UpdateGravity();
             body.mass += other.GetComponent<Rigidbody2D>().mass;
             GameManager.Instance.RemovePlanet(other.gameObject);
@@ -70,7 +70,7 @@ public class Hole : SpaceElement
             float newSize = transform.localScale.x + 0.5f;
             if (newSize > settings.maxSizeHole)
                 newSize = settings.maxSizeHole;
-            transform.localScale = new Vector3(newSize, newSize, newSize);
+            transform.localScale = new Vector3(newSize, transform.localScale.y, newSize);
             UpdateGravity();
             body.mass += other.GetComponent<Rigidbody2D>().mass;
             GameManager.Instance.RemoveStar(other.gameObject);
@@ -113,4 +113,9 @@ public class Hole : SpaceElement
     {
     }
 
+
+    public void OnDestroy()
+    {
+        ScreenShake.instance.StartScreenShake(GetComponent<Rigidbody2D>().mass);
+    }
 }
