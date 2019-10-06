@@ -238,8 +238,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 1
-  m_Color: {r: 0.7735849, g: 0.12041653, b: 0.12041653, a: 1}
-  m_Intensity: 0.7
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 0.9
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -366,7 +366,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5131311430483306674
 PrefabInstance:
@@ -435,6 +435,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5131311430329615812, guid: fbb86acc0ccc15f4cab584fcb492c658,
+        type: 3}
+      propertyPath: starPrefab
+      value: 
+      objectReference: {fileID: 1575071636865238332, guid: 912590a18a5d6ce44a8da2e103dae2bc,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbb86acc0ccc15f4cab584fcb492c658, type: 3}
 --- !u!1001 &7379684763183207856
@@ -487,7 +493,7 @@ PrefabInstance:
     - target: {fileID: 7379684762155501232, guid: 48a716abcd741d747bf98934c5c39ec4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7379684762155501232, guid: 48a716abcd741d747bf98934c5c39ec4,
         type: 3}

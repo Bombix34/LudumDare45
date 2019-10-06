@@ -25,6 +25,7 @@ public class Hole : SpaceElement
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+        body.velocity = new Vector2(0f, 0f);
     }
 
     protected override void OnCollisionEnter2D(Collision2D collision)

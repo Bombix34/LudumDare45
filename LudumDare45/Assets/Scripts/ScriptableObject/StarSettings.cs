@@ -22,6 +22,13 @@ public class StarSettings : ScriptableObject
     public RangedFloat SpeedOnSpawn;
 
 
+    [Header("Réglages transition type d'étoile")]
+    [Range(0.1f, 5f)]
+    public float sizeToBeMediumStar;
+    [Range(0.1f, 5f)]
+    public float sizeToBeBigRedStar;
+
+
     [Header("Réglages Passage en trou noir")]
     [Range(0f, 100f)]
     public float chanceToTransform = 50f;
