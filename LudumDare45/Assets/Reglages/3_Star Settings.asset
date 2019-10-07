@@ -17,22 +17,23 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f3696ac817033c64c8edd9fcc4f5af62, type: 2}
   SizeOnSpawn:
     minValue: 0.12442436
-    maxValue: 0.2016533
+    maxValue: 0.13915955
   MassOnSpawn:
-    minValue: 215.54599
-    maxValue: 352.71823
+    minValue: 131.97284
+    maxValue: 131.97284
   SpeedOnSpawn:
-    minValue: 0.12744047
-    maxValue: 0.50976187
-  sizeToBeMediumStar: 0.3
-  sizeToBeBigRedStar: 0.55
-  chanceToTransform: 23.5
-  massToTransform: 1000
-  gravityRange: 16
-  gravityOnAshe: -40
-  gravityOnPlanet: -300
+    minValue: 0.1
+    maxValue: 0.1
+  sizeToBeMediumStar: 0.18
+  sizeToBeBigRedStar: 0.45
+  chanceToTransform: 0.05
+  massToTransform: 250
+  gravityRange: 80
+  gravityOnAshe: -200
+  gravityOnPlanet: -220
   gravityOnStar: -750
-  maxSizeStar: 0.8
+  maxSizeStar: 0.5
+  AddMassMultiplicator: 0.1
   lightIntensity:
-    minValue: 46.728172
-    maxValue: 64.145035
+    minValue: 52.915672
+    maxValue: 70.332535

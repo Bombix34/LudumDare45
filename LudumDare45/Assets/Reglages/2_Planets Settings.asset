@@ -25,15 +25,16 @@ MonoBehaviour:
   - {fileID: 2100000, guid: a9fd1f7d498258d449f05491bb04064d, type: 2}
   SizeOnSpawn:
     minValue: 0.033452477
-    maxValue: 0.06433168
+    maxValue: 0.035179596
   MassOnSpawn:
-    minValue: 85.73268
-    maxValue: 235.76488
+    minValue: 24.982971
+    maxValue: 24.982971
   SpeedOnSpawn:
-    minValue: 0.7646428
-    maxValue: 1.7416865
-  chanceToTransform: 66.9
-  massToTransform: 500
-  gravityRange: 22
+    minValue: 0.1
+    maxValue: 0.1
+  chanceToTransform: 5
+  massToTransform: 100
+  gravityRange: 30
   planetGravity: -10
-  maxSizePlanet: 0.08
+  maxSizePlanet: 0.1
+  AddMassMultiplicator: 0.1
