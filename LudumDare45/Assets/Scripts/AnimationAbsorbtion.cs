@@ -52,7 +52,6 @@ public class AnimationAbsorbtion
             catch (Exception e)
             {
                 error = true;
-                Debug.LogWarning("ERREUR TRY CATCH");
             }
 
             yield return null;

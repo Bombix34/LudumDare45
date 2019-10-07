@@ -86,7 +86,6 @@ public class ScreenShake : MonoBehaviour
     {
         this.powerScreenShake = power;
         this.timeScreenShake = time;
-        Debug.Log("SCREENSHAKE TA MERE ");
         screenShakeCo = StartCoroutine(ScreenShakeCoroutine(powerScreenShake));
     }
 
