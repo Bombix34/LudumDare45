@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Spawn Settings
   m_EditorClassIdentifier: 
   timeBetweenDustSpawn: 0
+  instancePerClick: 2

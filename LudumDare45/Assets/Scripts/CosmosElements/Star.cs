@@ -62,6 +62,8 @@ public class Star : SpaceElement
         GameObject other = collision.gameObject;
         if (other.tag == "Ashe")
         {
+
+            other.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             float newSize = transform.localScale.x + (0.005f * settings.AddSizeMultiplicator);
             if (newSize > settings.maxSizeStar)
                 newSize = settings.maxSizeStar;
@@ -74,6 +76,8 @@ public class Star : SpaceElement
         }
         else if (other.tag == "Planet")
         {
+
+            other.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             float newSize = transform.localScale.x + (0.01f * settings.AddSizeMultiplicator);
             if (newSize > settings.maxSizeStar)
                 newSize = settings.maxSizeStar;
@@ -89,6 +93,8 @@ public class Star : SpaceElement
             Rigidbody2D otherbody = other.GetComponent<Rigidbody2D>();
             if (otherbody.mass + other.transform.localScale.magnitude < body.mass + transform.localScale.magnitude)
             {
+
+                other.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                 float newSize = transform.localScale.x + (other.transform.localScale.x * settings.AddSizeMultiplicator);
                 if (newSize > settings.maxSizeStar)
                     newSize = settings.maxSizeStar;
