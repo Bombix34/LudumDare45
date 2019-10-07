@@ -33,7 +33,6 @@ public class Hole : SpaceElement
         body.velocity = new Vector2(0f, 0f);
     }
 
-
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(0f, 0f, 1f, 0.5f);
@@ -45,7 +44,7 @@ public class Hole : SpaceElement
         GameObject other = collision.gameObject;
         if (other.tag == "Ashe")
         {
-            float newSize = transform.localScale.x + 0.05f;
+            float newSize = transform.localScale.x + (0.05f * settings.AddSizeMultiplicator);
             if (newSize > settings.maxSizeHole)
                 newSize = settings.maxSizeHole;
             transform.localScale = new Vector3(newSize, transform.localScale.y, newSize);
@@ -56,7 +55,7 @@ public class Hole : SpaceElement
         }
         else if (other.tag == "Planet")
         {
-            float newSize = transform.localScale.x + 0.1f;
+            float newSize = transform.localScale.x + (0.1f * settings.AddSizeMultiplicator);
             if (newSize > settings.maxSizeHole)
                 newSize = settings.maxSizeHole;
             transform.localScale = new Vector3(newSize, transform.localScale.y, newSize);
@@ -67,7 +66,7 @@ public class Hole : SpaceElement
         }
         else if (other.tag == "Star")
         {
-            float newSize = transform.localScale.x + 0.5f;
+            float newSize = transform.localScale.x + (0.5f * settings.AddSizeMultiplicator);
             if (newSize > settings.maxSizeHole)
                 newSize = settings.maxSizeHole;
             transform.localScale = new Vector3(newSize, transform.localScale.y, newSize);
@@ -81,7 +80,7 @@ public class Hole : SpaceElement
             Rigidbody2D otherbody = other.GetComponent<Rigidbody2D>();
             if (otherbody.mass  < body.mass )
             {
-                float newSize = transform.localScale.x + other.transform.localScale.x;
+                float newSize = transform.localScale.x + (other.transform.localScale.x * settings.AddSizeMultiplicator);
                 if (newSize > settings.maxSizeHole)
                     newSize = settings.maxSizeHole;
                 transform.localScale = new Vector3(newSize, newSize, newSize);

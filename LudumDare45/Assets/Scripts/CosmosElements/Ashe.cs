@@ -49,7 +49,7 @@ public class Ashe : SpaceElement
             if (otherVelocity.magnitude + (5 * other.GetComponent<Rigidbody2D>().mass) < body.velocity.magnitude + (5 * body.mass)) 
             {
                // body.velocity += (otherVelocity * 0.5f);
-                float newSize = transform.localScale.x + other.transform.localScale.x;
+                float newSize = transform.localScale.x + (other.transform.localScale.x * settings.AddSizeMultiplicator);
                 if (newSize > settings.maxSizeAshes)
                     newSize = settings.maxSizeAshes;
                 transform.localScale = new Vector3(newSize, newSize, newSize);
