@@ -42,4 +42,7 @@ public class PlanetSettings : ScriptableObject
 
     [Range(0.01f, 2f)]
     public float AddSizeMultiplicator = 1f;
+
+    [Range(0, 100)]
+    public int DustsCreatedOnCollidingWithPlanet = 10;
 }

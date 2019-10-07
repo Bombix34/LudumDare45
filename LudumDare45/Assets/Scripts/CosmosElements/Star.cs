@@ -89,6 +89,7 @@ public class Star : SpaceElement
             body.mass += (other.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
             //GameManager.Instance.RemovePlanet(other.gameObject);
             CheckNextStep();
+            SpawnSubEmitters(collision, settings.DustsCreatedOnCollidingWithPlanet);
             ScreenShake.instance.StartScreenShake(other.GetComponent<Rigidbody2D>().mass);
             animationAbsorption(other.GetComponent<Planet>());
         }
@@ -108,6 +109,7 @@ public class Star : SpaceElement
                 body.mass += (other.GetComponent<Rigidbody2D>().mass*settings.AddMassMultiplicator);
                 //GameManager.Instance.RemoveStar(other.gameObject);
                 CheckNextStep();
+                SpawnSubEmitters(collision, settings.DustsCreatedOnCollidingWithStar);
                 ScreenShake.instance.StartScreenShake(other.GetComponent<Rigidbody2D>().mass);
                 animationAbsorption(other.GetComponent<Star>());
             }
@@ -147,6 +149,7 @@ public class Star : SpaceElement
             if (rand < (settings.chanceToTransform / 100))
             {
                 GameManager manager = GameManager.Instance;
+                StartCoroutine(Explosion());
                 manager.AddHole(nextStepObject = Instantiate(manager.HolePrefab, this.transform.position, Quaternion.identity));
                 SoundManager.Instance.PlaySound(7);
                 manager.RemoveStar(this.gameObject);
@@ -179,6 +182,19 @@ public class Star : SpaceElement
         //GetComponent<CircleCollider2D>().radius =3.2f * transform.localScale.x;
     }
 
+     IEnumerator Explosion()
+    {
+        GameObject ashe;
+        for(int i = 0; i<settings.ashesNumber; i++)
+        {
+            ashe = Instantiate(GameManager.Instance.AshePrefab, this.transform.position + new Vector3(Random.Range(-1f, 1f),Random.Range(-1f, 1f),0), Quaternion.identity);
+            GameManager.Instance.AddAshes(ashe);
+            ashe.GetComponent<Ashe>().ChangeVelocity(Vector3.Normalize(ashe.transform.position - this.transform.position), settings.ashesSpeed);
+        }
+
+        yield return new WaitForSeconds(0.5f);
+    }
+
     public override void AddNewMaterial()
     {
         GetComponent<MeshRenderer>().material = settings.GetRandomMaterial();
@@ -191,4 +207,13 @@ public class Star : SpaceElement
         big
     }
 
+    private void SpawnSubEmitters(Collision2D collision, int numberOfDustToCreate)
+    {
+        Vector2 p = collision.GetContact(0).point;
+        Vector3 point = new Vector3(p.x, p.y, this.transform.position.z);
+        for (int i = 0; i < numberOfDustToCreate; i++)
+        {
+            GameManager.Instance.AddAshes(Instantiate(GameManager.Instance.AshePrefab, point, Quaternion.identity));
+        }
+    }
 }
