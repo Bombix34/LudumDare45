@@ -25,7 +25,7 @@ public class DirectionalLightRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            dirLight.color = Color.Lerp(dirLight.color, newColor, Time.fixedDeltaTime);
+            dirLight.color = Color.Lerp(dirLight.color, newColor, 0.005f);
             if (dirLight.color == newColor)
             {
                 int randColor = Random.Range(0, 5);

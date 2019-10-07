@@ -28,6 +28,9 @@ public class GameManager : Singleton<GameManager>
     public Vector3 ScreenRange => screenRange;
     Vector3 screenRange;
 
+    [SerializeField] GameObject logo;
+    bool firstEnding = false;
+
     void Awake()
     {
         Ashes = new List<GameObject>();
@@ -38,6 +41,8 @@ public class GameManager : Singleton<GameManager>
         Vector3 StartPoint = Camera.main.ScreenToWorldPoint(new Vector3(0f, 0f, 20f));
         Vector3 EndPoint = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 20f));
         screenRange = EndPoint - StartPoint;
+
+        logo.SetActive(false);
     }
 
     private void Update()
@@ -78,6 +83,8 @@ public class GameManager : Singleton<GameManager>
 
         if (Ashes.Count >= 1 && MusicManager.Instance.MatchPhase(MusicManager.Phase.nothing))
         {
+            if(!firstEnding)
+                logo.SetActive(true);
             MusicManager.Instance.ResetMusic();
             MusicManager.Instance.PlayNextPhase();
         }
@@ -141,6 +148,7 @@ public class GameManager : Singleton<GameManager>
         if(Holes.Count>=1&&Stars.Count==0&&Planets.Count==0&&Ashes.Count<=5)
         {
             //GAME FEEL / 20 
+            firstEnding = true;
             MusicManager.Instance.PlayNextPhase();
             MusicManager.Instance.currentPhase = MusicManager.Phase.nothing;
             print("END");
