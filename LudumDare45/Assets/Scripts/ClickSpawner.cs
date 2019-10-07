@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ClickSpawner : MonoBehaviour
 {
     public GameObject particlePrefab;
+    [SerializeField] Image tuto;
 
     [SerializeField] SpawnSettings settings;
     private float chronoSpawn = 0f;
@@ -12,8 +14,17 @@ public class ClickSpawner : MonoBehaviour
     private float chronoNoteSound=0f;
     public float maxChrono=0.2f;
 
+    private UTimer timerSpwanTuto;
+    public float tempsAvantSpawnTuto = 5f;
+    public float speedFade = 1f;
+    private bool flagFadeIn = false;
+    private Coroutine FadeInCoroutine;
+
     private void Start()
     {
+        timerSpwanTuto = UTimer.Initialize(tempsAvantSpawnTuto, this, startFadeInTuto);
+        tuto.color = new Color(tuto.color.r, tuto.color.g, tuto.color.b, 0);
+        timerSpwanTuto.start();
     }
 
     void Update()
@@ -42,6 +53,7 @@ public class ClickSpawner : MonoBehaviour
         // add attraction force on gravity modifier
         if(Input.mouseScrollDelta.y > 0)
         {
+            startFadeOutTuto();
             GameObject gravityModifier = getGravityModifierOverMouse();
             if (gravityModifier == null)
             {
@@ -55,6 +67,7 @@ public class ClickSpawner : MonoBehaviour
         // add refraction force on gravity modifier
         if(Input.mouseScrollDelta.y < 0)
         {
+            startFadeOutTuto();
             GameObject gravityModifier = getGravityModifierOverMouse();
             if (gravityModifier == null)
             {
@@ -92,5 +105,47 @@ public class ClickSpawner : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void startFadeInTuto()
+    {
+        FadeInCoroutine = StartCoroutine(FadeIn());
+    }
+
+    private void startFadeOutTuto()
+    {
+        timerSpwanTuto.Stop();
+        if (flagFadeIn)
+        {
+            StopCoroutine(FadeInCoroutine);
+        }
+        StartCoroutine(FadeOut());
+    }
+    
+
+    private IEnumerator FadeIn()
+    {
+        flagFadeIn = true;
+        float alpha = 0;
+
+        while(alpha < 1)
+        {
+            alpha += Time.deltaTime * speedFade;
+            tuto.color = new Color(tuto.color.r, tuto.color.g, tuto.color.b, alpha);
+            yield return null;
+        }
+
+        flagFadeIn = false;
+    }
+
+    private IEnumerator FadeOut()
+    {
+        float alpha = tuto.color.a;
+        while(alpha > 0)
+        {
+            alpha -= Time.deltaTime * speedFade;
+            tuto.color = new Color(tuto.color.r, tuto.color.g, tuto.color.b, alpha);
+            yield return null;
+        }
     }
 }
