@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class ClickSpawner : MonoBehaviour
 {
     public GameObject particlePrefab;
-    [SerializeField] Image tuto;
+    [SerializeField] Image tutoClick;
+    [SerializeField] Image tutoMolette;
 
     [SerializeField] SpawnSettings settings;
     private float chronoSpawn = 0f;
@@ -14,17 +15,24 @@ public class ClickSpawner : MonoBehaviour
     private float chronoNoteSound=0f;
     public float maxChrono=0.2f;
 
-    private UTimer timerSpwanTuto;
-    public float tempsAvantSpawnTuto = 5f;
+    private UTimer timerSpwanMoletteTuto;
+    private UTimer timerSpwanClickTuto;
+    public float tempsAvantSpawnMoletteTuto = 20f;
+    public float tempsAvantSpawnClickTuto = 5f;
     public float speedFade = 1f;
-    private bool flagFadeIn = false;
-    private Coroutine FadeInCoroutine;
+    private bool flagFadeInMolette = false;
+    private bool flagFadeInClick = false;
+    private Coroutine FadeInMoletteCoroutine;
+    private Coroutine FadeInClickCoroutine;
 
     private void Start()
     {
-        timerSpwanTuto = UTimer.Initialize(tempsAvantSpawnTuto, this, startFadeInTuto);
-        tuto.color = new Color(tuto.color.r, tuto.color.g, tuto.color.b, 0);
-        timerSpwanTuto.start();
+        tutoMolette.color = new Color(tutoMolette.color.r, tutoMolette.color.g, tutoMolette.color.b, 0);
+        tutoClick.color = new Color(tutoClick.color.r, tutoClick.color.g, tutoClick.color.b, 0);
+        timerSpwanMoletteTuto = UTimer.Initialize(tempsAvantSpawnMoletteTuto, this, startFadeInMoletteTuto);
+        timerSpwanMoletteTuto.start();
+        timerSpwanClickTuto = UTimer.Initialize(tempsAvantSpawnClickTuto, this, startFadeInClickTuto);
+        timerSpwanClickTuto.start();
     }
 
     void Update()
@@ -32,6 +40,8 @@ public class ClickSpawner : MonoBehaviour
         chronoSpawn -= Time.fixedDeltaTime;
         if(Input.GetMouseButton(0)&&chronoSpawn<=0)
         {
+            startFadeOutClickTuto();
+
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,20f));
             for(int i=0; i < settings.instancePerClick;i++)
             {
@@ -53,7 +63,7 @@ public class ClickSpawner : MonoBehaviour
         // add attraction force on gravity modifier
         if(Input.mouseScrollDelta.y > 0)
         {
-            startFadeOutTuto();
+            startFadeOutMoletteTuto();
             GameObject gravityModifier = getGravityModifierOverMouse();
             if (gravityModifier == null)
             {
@@ -67,7 +77,7 @@ public class ClickSpawner : MonoBehaviour
         // add refraction force on gravity modifier
         if(Input.mouseScrollDelta.y < 0)
         {
-            startFadeOutTuto();
+            startFadeOutMoletteTuto();
             GameObject gravityModifier = getGravityModifierOverMouse();
             if (gravityModifier == null)
             {
@@ -107,44 +117,88 @@ public class ClickSpawner : MonoBehaviour
         return null;
     }
 
-    private void startFadeInTuto()
+    private void startFadeInMoletteTuto()
     {
-        FadeInCoroutine = StartCoroutine(FadeIn());
+        FadeInMoletteCoroutine = StartCoroutine(FadeInMolette());
     }
 
-    private void startFadeOutTuto()
+    private void startFadeOutMoletteTuto()
     {
-        timerSpwanTuto.Stop();
-        if (flagFadeIn)
+        timerSpwanMoletteTuto.Stop();
+        if (flagFadeInMolette)
         {
-            StopCoroutine(FadeInCoroutine);
+            StopCoroutine(FadeInMoletteCoroutine);
         }
-        StartCoroutine(FadeOut());
+        StartCoroutine(FadeOutMolette());
     }
-    
 
-    private IEnumerator FadeIn()
+    private void startFadeInClickTuto()
     {
-        flagFadeIn = true;
+        FadeInClickCoroutine = StartCoroutine(FadeInClick());
+    }
+
+    private void startFadeOutClickTuto()
+    {
+        timerSpwanClickTuto.Stop();
+        if (flagFadeInClick)
+        {
+            StopCoroutine(FadeInClickCoroutine);
+            StartCoroutine(FadeOutClick());
+        }
+        
+    }
+
+
+
+    private IEnumerator FadeInMolette()
+    {
+        flagFadeInMolette = true;
         float alpha = 0;
 
         while(alpha < 1)
         {
             alpha += Time.deltaTime * speedFade;
-            tuto.color = new Color(tuto.color.r, tuto.color.g, tuto.color.b, alpha);
+            tutoMolette.color = new Color(tutoMolette.color.r, tutoMolette.color.g, tutoMolette.color.b, alpha);
             yield return null;
         }
 
-        flagFadeIn = false;
+        flagFadeInMolette = false;
     }
 
-    private IEnumerator FadeOut()
+    private IEnumerator FadeOutMolette()
     {
-        float alpha = tuto.color.a;
+        float alpha = tutoMolette.color.a;
         while(alpha > 0)
         {
             alpha -= Time.deltaTime * speedFade;
-            tuto.color = new Color(tuto.color.r, tuto.color.g, tuto.color.b, alpha);
+            tutoMolette.color = new Color(tutoMolette.color.r, tutoMolette.color.g, tutoMolette.color.b, alpha);
+            yield return null;
+        }
+    }
+
+    private IEnumerator FadeInClick()
+    {
+        flagFadeInClick = true;
+        float alpha = 0;
+
+        while (alpha < 1)
+        {
+            alpha += Time.deltaTime * speedFade;
+            tutoClick.color = new Color(tutoClick.color.r, tutoClick.color.g, tutoClick.color.b, alpha);
+            yield return null;
+        }
+
+       // flagFadeInClick = false;
+    }
+
+    private IEnumerator FadeOutClick()
+    {
+        flagFadeInClick = false;
+        float alpha = tutoClick.color.a;
+        while (alpha > 0)
+        {
+            alpha -= Time.deltaTime * speedFade;
+            tutoClick.color = new Color(tutoClick.color.r, tutoClick.color.g, tutoClick.color.b, alpha);
             yield return null;
         }
     }
