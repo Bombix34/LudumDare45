@@ -111,6 +111,9 @@ MonoBehaviour:
   repulsionDestroy: {fileID: 11400000, guid: abb2670518cb1864fab3893f131b39ae, type: 2}
   attractionCreate: {fileID: 11400000, guid: 851f6da062f4f3c499cbdb95f5ff74e6, type: 2}
   attractionDestroy: {fileID: 11400000, guid: a8bd0bb56d0dfe449aaeb25edf39aec8, type: 2}
+  birthPlanet: {fileID: 11400000, guid: 4a865875f69fc504e8ea056ba7e1c81d, type: 2}
+  birthStar: {fileID: 11400000, guid: bb67ab74ba2575e4f991f1b53670c9ab, type: 2}
+  birthTrou: {fileID: 11400000, guid: 9644848b4f76a494d83a870f0dd55729, type: 2}
 --- !u!1 &2726306641061324383
 GameObject:
   m_ObjectHideFlags: 0

@@ -148,6 +148,7 @@ public class Star : SpaceElement
             {
                 GameManager manager = GameManager.Instance;
                 manager.AddHole(nextStepObject = Instantiate(manager.HolePrefab, this.transform.position, Quaternion.identity));
+                SoundManager.Instance.PlaySound(7);
                 manager.RemoveStar(this.gameObject);
                 willTransformForNextStep = true;
             }
