@@ -45,6 +45,4 @@ public abstract class SpaceElement : MonoBehaviour
             transform.localPosition = new Vector3(transform.localPosition.x, screenRange.y / 2, transform.localPosition.z);
         }
     }
-
-
 }

@@ -30,7 +30,6 @@ public class Star : SpaceElement
         body.mass = Random.Range(settings.MassOnSpawn.minValue, settings.MassOnSpawn.maxValue);
         body.velocity = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * Random.Range(settings.SpeedOnSpawn.minValue, settings.SpeedOnSpawn.maxValue);
         transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
-        //transform.LookAt
         body.MoveRotation(Random.Range(0f, 360f));
         //lightIntensity = Random.Range(settings.lightIntensity.minValue, settings.lightIntensity.maxValue);
 
@@ -61,27 +60,24 @@ public class Star : SpaceElement
         Gizmos.DrawSphere(this.transform.position,settings.gravityRange * transform.localScale.x);
     }
 
+    public void AsheInteraction(GameObject dust)
+    {
+        float newSize = transform.localScale.x + (0.005f * settings.AddSizeMultiplicator);
+        if (newSize > settings.maxSizeStar)
+            newSize = settings.maxSizeStar;
+        transform.localScale = new Vector3(newSize, newSize, newSize);
+        UpdateParticlesSize();
+        UpdateGravity();
+        body.mass += (dust.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
+        GameManager.Instance.RemoveAshe(dust.gameObject);
+        CheckNextStep();
+    }
+
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject other = collision.gameObject;
-        if (other.tag == "Ashe")
+        if (other.tag == "Planet")
         {
-
-            other.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-            float newSize = transform.localScale.x + (0.005f * settings.AddSizeMultiplicator);
-            if (newSize > settings.maxSizeStar)
-                newSize = settings.maxSizeStar;
-            transform.localScale = new Vector3(newSize, newSize, newSize);
-            UpdateParticlesSize();
-            UpdateGravity();
-            body.mass += (other.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
-            GameManager.Instance.RemoveAshe(other.gameObject);
-            CheckNextStep();
-        }
-        else if (other.tag == "Planet")
-        {
-
-            other.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             float newSize = transform.localScale.x + (0.01f * settings.AddSizeMultiplicator);
             if (newSize > settings.maxSizeStar)
                 newSize = settings.maxSizeStar;

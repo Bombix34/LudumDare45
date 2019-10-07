@@ -18,7 +18,6 @@ public class Hole : SpaceElement
         body.mass = Random.Range(settings.MassOnSpawn.minValue, settings.MassOnSpawn.maxValue);
         body.velocity = new Vector2(0f,0f);
         transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
-        //transform.LookAt
         body.MoveRotation(Random.Range(0f, 360f));
     }
 
@@ -37,6 +36,18 @@ public class Hole : SpaceElement
     {
         Gizmos.color = new Color(0f, 0f, 1f, 0.5f);
         Gizmos.DrawSphere(this.transform.position, settings.gravityRange * transform.localScale.x);
+    }
+
+    public void AsheInteraction(GameObject dust)
+    {
+        float newSize = transform.localScale.x + (0.05f * settings.AddSizeMultiplicator);
+        if (newSize > settings.maxSizeHole)
+            newSize = settings.maxSizeHole;
+        transform.localScale = new Vector3(newSize, transform.localScale.y, newSize);
+        UpdateGravity();
+        body.mass += (dust.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
+        GameManager.Instance.RemoveAshe(dust.gameObject);
+        CheckNextStep();
     }
 
     protected override void OnCollisionEnter2D(Collision2D collision)

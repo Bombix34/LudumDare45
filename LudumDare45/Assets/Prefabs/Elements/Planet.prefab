@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 5811403953290796190}
   - component: {fileID: 8541284372669425311}
   - component: {fileID: 7042748631689759103}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: gravityArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ PointEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 5943
+    m_Bits: 5938
   m_ForceMagnitude: -10
   m_ForceVariation: 0
   m_DistanceScale: 1
@@ -202,4 +202,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 22
+  m_Radius: 30

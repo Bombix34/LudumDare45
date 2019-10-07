@@ -19,7 +19,6 @@ public class Ashe : SpaceElement
         body.mass = Random.Range(settings.MassOnSpawn.minValue,settings.MassOnSpawn.maxValue);
         body.velocity = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * Random.Range(settings.SpeedOnSpawn.minValue, settings.SpeedOnSpawn.maxValue);
         transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
-        //transform.LookAt
         body.MoveRotation(Random.Range(0f, 360f));
     }
 
@@ -34,29 +33,39 @@ public class Ashe : SpaceElement
         base.FixedUpdate();
     }
 
-    protected override void OnCollisionEnter2D(Collision2D collision)
+   protected void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (IsInvulnerable)
         {
             return;
         }
-
         GameObject other = collision.gameObject;
-        if(other.tag=="Ashe")
+        if (other.tag == "Ashe")
         {
             Vector2 otherVelocity = other.GetComponent<Rigidbody2D>().velocity;
-            if (otherVelocity.magnitude + (5 * other.GetComponent<Rigidbody2D>().mass) < body.velocity.magnitude + (5 * body.mass)) 
+            if (otherVelocity.magnitude + (5 * other.GetComponent<Rigidbody2D>().mass) < body.velocity.magnitude + (5 * body.mass))
             {
-               // body.velocity += (otherVelocity * 0.5f);
+                // body.velocity += (otherVelocity * 0.5f);
                 float newSize = transform.localScale.x + (other.transform.localScale.x * settings.AddSizeMultiplicator);
                 if (newSize > settings.maxSizeAshes)
                     newSize = settings.maxSizeAshes;
                 transform.localScale = new Vector3(newSize, newSize, newSize);
-                body.mass +=( other.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
+                body.mass += (other.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
                 GameManager.Instance.RemoveAshe(other.gameObject);
                 CheckNextStep();
             }
+        }
+        else if(other.tag=="Planet")
+        {
+            other.GetComponent<Planet>().AsheInteraction(this.gameObject);
+        }
+        else if(other.tag=="Star")
+        {
+            other.GetComponent<Star>().AsheInteraction(this.gameObject);
+        }
+        else if(other.tag=="Hole")
+        {
+            other.GetComponent<Hole>().AsheInteraction(this.gameObject);
         }
     }
 

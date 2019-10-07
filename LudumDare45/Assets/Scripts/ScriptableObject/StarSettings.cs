@@ -27,7 +27,7 @@ public class StarSettings : ScriptableObject
     public float sizeToBeMediumStar;
     [Range(0.1f, 5f)]
     public float sizeToBeBigRedStar;
-    [Range(150f, 1000f)]
+    [Range(150f, 10000f)]
     public float massMax;
 
 
