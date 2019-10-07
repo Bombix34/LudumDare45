@@ -26,12 +26,12 @@ MonoBehaviour:
     maxValue: 0.925
   sizeToBeMediumStar: 0.18
   sizeToBeBigRedStar: 0.28
-  massMax: 4000
-  chanceToTransform: 0.05
-  massToTransform: 5100
+  massMax: 5100
+  chanceToTransform: 1
+  massToTransform: 4000
   gravityRange: 60
   gravityOnAshe: -30
-  gravityOnPlanet: -240
+  gravityOnPlanet: -300
   gravityOnStar: -750
   maxSizeStar: 0.4
   AddMassMultiplicator: 0.1

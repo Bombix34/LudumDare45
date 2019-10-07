@@ -208,8 +208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e4e9197406da942b0605eb05db03d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coefPowerScreenshake: 0.003
-  timeScreenShake: 0.2
+  coefPowerScreenshake: 0.0001
+  timeScreenShake: 0.1
 --- !u!1 &163299809
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,9 +22,10 @@ MonoBehaviour:
     minValue: 0
     maxValue: 0
   gravityRange: 3
-  gravityOnAshe: -40
-  gravityOnPlanet: -273
-  gravityOnStar: -750
+  gravityOnAshe: -20
+  gravityOnPlanet: -200
+  gravityOnStar: -500
   gravityOnHoles: -1
   maxSizeHole: 47.7
-  AddMassMultiplicator: 1
+  AddMassMultiplicator: 0.1
+  AddSizeMultiplicator: 0.1

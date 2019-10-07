@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e506306e6772640bbe7ca116a216e8, type: 3}
   m_Name: Zone Gravite Settings
   m_EditorClassIdentifier: 
-  RefractionForceDust: 1
-  RefractionForcePlanets: 2
-  RefractionForceStars: 3
-  RefractionRange: 10
-  AttractionForceDust: 4
-  AttractionForcePlanets: 5
-  AttractionForceStars: 6
-  AttractionRange: 10
+  RefractionForceDust: 75
+  RefractionForcePlanets: 150
+  RefractionForceStars: 920
+  RefractionRange: 25
+  AttractionForceDust: 75
+  AttractionForcePlanets: 100
+  AttractionForceStars: 700
+  AttractionRange: 25
