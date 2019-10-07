@@ -37,6 +37,8 @@ public class Star : SpaceElement
         lightMedium.SetActive(false);
         particleBig.SetActive(false);
         lightBig.SetActive(false);
+
+        absorption = AnimationAbsorbtion.Initialize();
     }
 
     private void Start()
@@ -85,8 +87,10 @@ public class Star : SpaceElement
             UpdateParticlesSize();
             UpdateGravity();
             body.mass += (other.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
-            GameManager.Instance.RemovePlanet(other.gameObject);
+            //GameManager.Instance.RemovePlanet(other.gameObject);
             CheckNextStep();
+            ScreenShake.instance.StartScreenShake(other.GetComponent<Rigidbody2D>().mass);
+            animationAbsorption(other.GetComponent<Planet>());
         }
         else if (other.tag == "Star")
         {
@@ -102,8 +106,10 @@ public class Star : SpaceElement
                 UpdateParticlesSize();
                 UpdateGravity();
                 body.mass += (other.GetComponent<Rigidbody2D>().mass*settings.AddMassMultiplicator);
-                GameManager.Instance.RemoveStar(other.gameObject);
+                //GameManager.Instance.RemoveStar(other.gameObject);
                 CheckNextStep();
+                ScreenShake.instance.StartScreenShake(other.GetComponent<Rigidbody2D>().mass);
+                animationAbsorption(other.GetComponent<Star>());
             }
         }
     }
@@ -141,8 +147,10 @@ public class Star : SpaceElement
             if (rand < (settings.chanceToTransform / 100))
             {
                 GameManager manager = GameManager.Instance;
-                manager.AddHole(Instantiate(manager.HolePrefab, this.transform.position, Quaternion.identity));
+                manager.AddHole(nextStepObject = Instantiate(manager.HolePrefab, this.transform.position, Quaternion.identity));
+                SoundManager.Instance.PlaySound(7);
                 manager.RemoveStar(this.gameObject);
+                willTransformForNextStep = true;
             }
         }
     }
@@ -183,8 +191,4 @@ public class Star : SpaceElement
         big
     }
 
-    public void OnDestroy()
-    {
-        ScreenShake.instance.StartScreenShake(GetComponent<Rigidbody2D>().mass);
-    }
 }

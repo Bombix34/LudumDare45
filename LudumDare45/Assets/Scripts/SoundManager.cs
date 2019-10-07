@@ -11,6 +11,9 @@ public class SoundManager : Singleton<SoundManager>
     public PitchVolumeAudio repulsionDestroy;           //2
     public PitchVolumeAudio attractionCreate;            //3
     public PitchVolumeAudio attractionDestroy;           //4
+    public PitchVolumeAudio birthPlanet;                //5
+    public PitchVolumeAudio birthStar;                   //6
+    public PitchVolumeAudio birthTrou;                  //7
 
     void Start()
     {
@@ -38,6 +41,15 @@ public class SoundManager : Singleton<SoundManager>
                 break;
             case 4:
                 attractionDestroy.Play(GetAudioSourceAvailable());
+                break;
+            case 5:
+                birthPlanet.Play(GetAudioSourceAvailable());
+                break;
+            case 6:
+                birthStar.Play(GetAudioSourceAvailable());
+                break;
+            case 7:
+                birthTrou.Play(GetAudioSourceAvailable());
                 break;
         }
     }

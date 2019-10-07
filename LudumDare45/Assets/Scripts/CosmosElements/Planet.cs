@@ -7,7 +7,7 @@ public class Planet : SpaceElement
     [SerializeField] PlanetSettings settings;
 
     [SerializeField] PointEffector2D gravitySystem;
-    [SerializeField] CircleCollider2D gravityArea;
+    [SerializeField] CircleCollider2D gravityArea; 
 
     protected override void Awake()
     {
@@ -17,6 +17,7 @@ public class Planet : SpaceElement
         body.velocity = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * Random.Range(settings.SpeedOnSpawn.minValue, settings.SpeedOnSpawn.maxValue);
         transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
         body.MoveRotation(Random.Range(0f, 360f));
+        absorption = AnimationAbsorbtion.Initialize();
     }
 
     private void Start()
@@ -74,8 +75,10 @@ public class Planet : SpaceElement
                 transform.localScale = new Vector3(newSize, newSize, newSize);
                 UpdateScale();
                 body.mass +=( other.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
-                GameManager.Instance.RemovePlanet(other.gameObject);
+                //GameManager.Instance.RemovePlanet(other.gameObject);
                 CheckNextStep();
+                ScreenShake.instance.StartScreenShake(other.GetComponent<Rigidbody2D>().mass);
+                animationAbsorption(other.GetComponent<Planet>());
             }
         }
     }
@@ -88,8 +91,10 @@ public class Planet : SpaceElement
             if (rand < (settings.chanceToTransform / 100))
             {
                 GameManager manager = GameManager.Instance;
-                manager.AddStar(Instantiate(manager.StarPrefab, this.transform.position, Quaternion.identity));
+                manager.AddStar(nextStepObject = Instantiate(manager.StarPrefab, this.transform.position, Quaternion.identity));
+                SoundManager.Instance.PlaySound(6);
                 manager.RemovePlanet(this.gameObject);
+                willTransformForNextStep = true;
             }
         }
     }
@@ -104,8 +109,5 @@ public class Planet : SpaceElement
         GetComponent<MeshRenderer>().material = settings.GetRandomMaterial();
     }
 
-    public void OnDestroy()
-    {
-        ScreenShake.instance.StartScreenShake(GetComponent<Rigidbody2D>().mass);
-    }
+
 }
