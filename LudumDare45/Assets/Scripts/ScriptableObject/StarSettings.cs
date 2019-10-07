@@ -15,7 +15,7 @@ public class StarSettings : ScriptableObject
     [Header("Réglages Spawn")]
     [MinMaxRange(0.0001f, 1f)]
     public RangedFloat SizeOnSpawn;
-    [MinMaxRange(1f, 1000f)]
+    [MinMaxRange(1f, 10000f)]
     public RangedFloat MassOnSpawn;
 
     [MinMaxRange(0.1f, 10f)]
