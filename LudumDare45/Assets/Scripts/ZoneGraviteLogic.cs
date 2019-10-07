@@ -31,8 +31,16 @@ public class ZoneGraviteLogic : MonoBehaviour
         }
         SoundManager.Instance.PlaySound(3);
         go = Instantiate(GameManager.Instance.ZoneAttrationPrefab, position, Quaternion.Euler(-90, 0, 0));
-        go.GetComponent<PointEffector2D>().forceMagnitude = -go.GetComponent<ZoneGraviteLogic>().settings.AttractionForce;
-        go.GetComponent<CircleCollider2D>().radius = go.GetComponent<ZoneGraviteLogic>().settings.AttractionRange;
+
+        PointEffector2D[] listPointEmitter = go.GetComponentsInChildren<PointEffector2D>();
+        listPointEmitter[0].forceMagnitude = -go.GetComponent<ZoneGraviteLogic>().settings.AttractionForceDust;
+        listPointEmitter[1].forceMagnitude = -go.GetComponent<ZoneGraviteLogic>().settings.AttractionForcePlanets;
+        listPointEmitter[2].forceMagnitude = -go.GetComponent<ZoneGraviteLogic>().settings.AttractionForceStars;
+
+        foreach(CircleCollider2D circleCollider in go.GetComponentsInChildren<CircleCollider2D>())
+        {
+            circleCollider.radius = go.GetComponent<ZoneGraviteLogic>().settings.AttractionRange;
+        }
         attractionZone = go;
 
         return go;
@@ -49,8 +57,15 @@ public class ZoneGraviteLogic : MonoBehaviour
         }
         SoundManager.Instance.PlaySound(1);
         go = Instantiate(GameManager.Instance.ZoneRefractionPrefab, position, Quaternion.Euler(-90, 0, 0));
-        go.GetComponent<PointEffector2D>().forceMagnitude = go.GetComponent<ZoneGraviteLogic>().settings.RefractionForce;
-        go.GetComponent<CircleCollider2D>().radius = go.GetComponent<ZoneGraviteLogic>().settings.RefractionRange;
+        PointEffector2D[] listPointEmitter = go.GetComponentsInChildren<PointEffector2D>();
+        listPointEmitter[0].forceMagnitude = go.GetComponent<ZoneGraviteLogic>().settings.RefractionForceDust;
+        listPointEmitter[1].forceMagnitude = go.GetComponent<ZoneGraviteLogic>().settings.RefractionForcePlanets;
+        listPointEmitter[2].forceMagnitude = go.GetComponent<ZoneGraviteLogic>().settings.RefractionForceStars;
+
+        foreach (CircleCollider2D circleCollider in go.GetComponentsInChildren<CircleCollider2D>())
+        {
+            circleCollider.radius = go.GetComponent<ZoneGraviteLogic>().settings.RefractionRange;
+        }
         refractionZone = go;
 
         return go;
@@ -71,24 +86,6 @@ public class ZoneGraviteLogic : MonoBehaviour
         }
 
     }
-
-    /*public void AddForce()
-    {
-        if(pointEffector.forceMagnitude + settings.Force <= settings.RangeOfGravityModification.maxValue)
-        {
-            pointEffector.forceMagnitude += settings.Force;
-        }
-    }
-
-    public void RemoveForce()
-    {
-        if (pointEffector.forceMagnitude - settings.Force >= settings.RangeOfGravityModification.minValue)
-        {
-            pointEffector.forceMagnitude -= settings.Force;
-        }
-    }*/
-
-
 
 
 }
