@@ -185,8 +185,8 @@ PointEffector2D:
   m_ForceSource: 0
   m_ForceTarget: 0
   m_ForceMode: 2
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_Drag: 0.1
+  m_AngularDrag: 100000
 --- !u!58 &7042748631689759103
 CircleCollider2D:
   m_ObjectHideFlags: 0
