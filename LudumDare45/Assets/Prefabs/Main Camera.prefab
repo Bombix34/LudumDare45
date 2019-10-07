@@ -203,10 +203,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlePrefab: {fileID: 6564011482577566272, guid: 755698261c47a1e4cb2ddecf599b94ae,
     type: 3}
-  tuto: {fileID: 0}
+  tutoClick: {fileID: 0}
+  tutoMolette: {fileID: 0}
   settings: {fileID: 11400000, guid: 856847393d8171d4784c979bd180df87, type: 2}
   maxChrono: 0.2
-  tempsAvantSpawnTuto: 5
+  tempsAvantSpawnMoletteTuto: 25
+  tempsAvantSpawnClickTuto: 5
   speedFade: 1
 --- !u!114 &5131311430329615812
 MonoBehaviour:
