@@ -100,7 +100,12 @@ public class GameManager : Singleton<GameManager>
         if (Stars.Count >= 1 && MusicManager.Instance.MatchPhase(MusicManager.Phase.manyPlanet))
             MusicManager.Instance.PlayNextPhase();
         else if (Stars.Count >= 3 && MusicManager.Instance.MatchPhase(MusicManager.Phase.firstSun))
-            MusicManager.Instance.PlayNextPhase();
+        {
+            if (MusicManager.Instance.GetCurrentPhase() != MusicManager.Phase.firstSun)
+                MusicManager.Instance.ForceManyStars();
+            else
+                MusicManager.Instance.PlayNextPhase();
+        }
     }
 
     public void RemoveStar(GameObject toRm)

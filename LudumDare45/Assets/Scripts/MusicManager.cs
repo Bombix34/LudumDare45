@@ -71,10 +71,11 @@ public class MusicManager : Singleton<MusicManager>
         else if((int)currentPhase <= (int)Phase.firstSun)
         {
             currentPhase = Phase.manySun;
-            StartCoroutine(FadeInEffect(Scene6, musicInitVolume, 1.5f));
-            StartCoroutine(FadeInEffect(Scene7, musicInitVolume, 2f));
-            StartCoroutine(FadeOutEffect(Scene5, 0f, 3f));
-            StartCoroutine(FadeOutEffect(Scene4, 0f, 3f));
+            StartCoroutine(FadeInEffect(Scene8, musicInitVolume, 2f));
+            StartCoroutine(FadeInEffect(Scene9, musicInitVolume, 2f));
+            StartCoroutine(FadeOutEffect(Scene5, 0f, 4f));
+            StartCoroutine(FadeOutEffect(Scene4, 0f, 4f));
+
 
             Scene3.volume = 0f;
             Scene2.volume = 0f;
@@ -83,11 +84,10 @@ public class MusicManager : Singleton<MusicManager>
         else if((int)currentPhase <= (int)Phase.manySun)
         {
             currentPhase = Phase.firstBlackHole;
-            StartCoroutine(FadeInEffect(Scene8, musicInitVolume, 1.5f));
-            StartCoroutine(FadeInEffect(Scene9, musicInitVolume, 2f));
-            StartCoroutine(FadeOutEffect(Scene6, 0f, 1f));
-            StartCoroutine(FadeOutEffect(Scene7, 0f, 1f));
-
+            StartCoroutine(FadeInEffect(Scene6, musicInitVolume, 2f));
+            StartCoroutine(FadeInEffect(Scene7, musicInitVolume, 2f));
+            StartCoroutine(FadeOutEffect(Scene8, 0f, 3f));
+            StartCoroutine(FadeOutEffect(Scene9, 0f, 3f));
 
             Scene3.volume = 0f;
             Scene2.volume = 0f;
@@ -100,27 +100,42 @@ public class MusicManager : Singleton<MusicManager>
             currentPhase = Phase.end;
             Scene12.Play();
             StartCoroutine(FadeInEffect(Scene12, musicInitVolume, 0.5f));
-            StartCoroutine(FadeOutEffect(Scene8, 0f, 5f));
-            StartCoroutine(FadeOutEffect(Scene9, 0f, 5f));
+            StartCoroutine(FadeOutEffect(Scene6, 0f, 5f));
+            StartCoroutine(FadeOutEffect(Scene7, 0f, 5f));
 
             Scene3.volume = 0f;
             Scene2.volume = 0f;
             Scene1.volume = 0f;
             Scene4.volume = 0f;
             Scene5.volume = 0f;
-            Scene6.volume = 0f;
-            Scene7.volume = 0f;
+            Scene9.volume = 0f;
+            Scene8.volume = 0f;
         }
+    }
+
+    public void ForceManyStars()
+    {
+        currentPhase = Phase.manySun;
+        StartCoroutine(FadeInEffect(Scene8, musicInitVolume, 2f));
+        StartCoroutine(FadeInEffect(Scene9, musicInitVolume, 2f));
+        StartCoroutine(FadeOutEffect(Scene6, 0f, 4f));
+        StartCoroutine(FadeOutEffect(Scene7, 0f, 4f));
+
+
+        Scene3.volume = 0f;
+        Scene2.volume = 0f;
+        Scene1.volume = 0f;
+        Scene4.volume = 0f;
+        Scene5.volume = 0f;
     }
 
     public void ForceHolePhase()
     {
         currentPhase = Phase.firstBlackHole;
-        StartCoroutine(FadeInEffect(Scene8, musicInitVolume, 1.5f));
-        StartCoroutine(FadeInEffect(Scene9, musicInitVolume, 2f));
-        StartCoroutine(FadeOutEffect(Scene6, 0f, 1f));
-        StartCoroutine(FadeOutEffect(Scene7, 0f, 1f));
-
+        StartCoroutine(FadeInEffect(Scene6, musicInitVolume, 2f));
+        StartCoroutine(FadeInEffect(Scene7, musicInitVolume, 2f));
+        StartCoroutine(FadeOutEffect(Scene8, 0f, 3f));
+        StartCoroutine(FadeOutEffect(Scene9, 0f, 3f));
 
         Scene3.volume = 0f;
         Scene2.volume = 0f;
