@@ -30,21 +30,47 @@ public abstract class SpaceElement : MonoBehaviour
     protected void OnBecameInvisible()
     {
         Vector3 screenRange = GameManager.Instance.ScreenRange;
+        Vector3 resultPos = Vector3.zero;
         if (transform.localPosition.x > screenRange.x/2)
         {
-            transform.localPosition = new Vector3(-screenRange.x/2, transform.localPosition.y, transform.localPosition.z);
+            //Droite
+            resultPos = new Vector3(-screenRange.x / 2, transform.localPosition.y, transform.localPosition.z);
+            if (this.gameObject.tag != "Ashe")
+            {
+                float radius = GetComponent<Renderer>().bounds.extents.magnitude;
+                resultPos = new Vector3(resultPos.x - radius, resultPos.y, resultPos.z);
+            }
+            transform.localPosition = resultPos;
         }
         else if (transform.localPosition.x < -screenRange.x / 2)
         {
-            transform.localPosition = new Vector3(screenRange.x / 2, transform.localPosition.y, transform.localPosition.z);
+            resultPos = new Vector3(screenRange.x / 2, transform.localPosition.y, transform.localPosition.z);
+            if (this.gameObject.tag != "Ashe")
+            {
+                float radius = GetComponent<Renderer>().bounds.extents.magnitude;
+                resultPos = new Vector3(resultPos.x + radius, resultPos.y, resultPos.z);
+            }
+            transform.localPosition = resultPos;
         }
         if (transform.localPosition.y > screenRange.y / 2)
         {
-            transform.localPosition = new Vector3(transform.localPosition.x, -screenRange.y / 2, transform.localPosition.z);
+            resultPos = new Vector3(transform.localPosition.x, -screenRange.y / 2, transform.localPosition.z);
+            if (this.gameObject.tag != "Ashe")
+            {
+                float radius = GetComponent<Renderer>().bounds.extents.magnitude;
+                resultPos = new Vector3(resultPos.x, resultPos.y - radius, resultPos.z);
+            }
+            transform.localPosition = resultPos;
         }
         else if (transform.localPosition.y < -screenRange.y / 2)
         {
-            transform.localPosition = new Vector3(transform.localPosition.x, screenRange.y / 2, transform.localPosition.z);
+            resultPos = new Vector3(transform.localPosition.x, screenRange.y / 2, transform.localPosition.z);
+            if (this.gameObject.tag != "Ashe")
+            {
+                float radius = GetComponent<Renderer>().bounds.extents.magnitude;
+                resultPos = new Vector3(resultPos.x + radius, resultPos.y + radius, resultPos.z);
+            }
+            transform.localPosition = resultPos;
         }
     }
 
