@@ -19,23 +19,25 @@ MonoBehaviour:
     minValue: 0.12442436
     maxValue: 0.13915955
   MassOnSpawn:
-    minValue: 131.97284
-    maxValue: 131.97284
+    minValue: 3458.125
+    maxValue: 3458.125
   SpeedOnSpawn:
-    minValue: 0.1
-    maxValue: 0.1
+    minValue: 0.51249987
+    maxValue: 0.925
   sizeToBeMediumStar: 0.18
-  sizeToBeBigRedStar: 0.45
-  massMax: 526
-  chanceToTransform: 60
-  massToTransform: 250
-  gravityRange: 80
-  gravityOnAshe: -200
-  gravityOnPlanet: -220
+  sizeToBeBigRedStar: 0.28
+  massMax: 5100
+  chanceToTransform: 1
+  massToTransform: 5000
+  gravityRange: 60
+  gravityOnAshe: -30
+  gravityOnPlanet: -300
   gravityOnStar: -750
-  maxSizeStar: 0.5
+  ashesNumber: 100
+  ashesSpeed: 15
+  maxSizeStar: 0.4
   AddMassMultiplicator: 0.1
   lightIntensity:
     minValue: 52.915672
     maxValue: 70.332535
-  AddSizeMultiplicator: 1
+  AddSizeMultiplicator: 0.015

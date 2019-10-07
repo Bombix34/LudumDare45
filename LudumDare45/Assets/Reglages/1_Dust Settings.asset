@@ -23,9 +23,10 @@ MonoBehaviour:
     minValue: 1.7151978
     maxValue: 2.8844562
   SpeedOnSpawn:
-    minValue: 1.13125
-    maxValue: 1.5437498
+    minValue: 1.95625
+    maxValue: 2.3687499
   chanceToTransform: 20
   massToTransform: 20
   maxSizeAshes: 0.029
-  AddMassMultiplicator: 0.5
+  AddMassMultiplicator: 0.2
+  AddSizeMultiplicator: 0.1

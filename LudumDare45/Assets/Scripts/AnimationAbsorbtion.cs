@@ -42,7 +42,9 @@ public class AnimationAbsorbtion
             {
                 distance = Vector2.Distance(p.transform.position, g.transform.position);
                 Vector2 newPos = Vector2.Lerp(p.transform.position, g.transform.position, avancee);
+                Vector3 newScale = Vector3.Lerp(p.transform.localScale, Vector3.zero, avancee);
                 p.transform.position = new Vector3(newPos.x, newPos.y, p.transform.position.z);
+                p.transform.localScale = newScale;
 
                 avancee += Time.deltaTime * speed;
 
@@ -50,7 +52,6 @@ public class AnimationAbsorbtion
             catch (Exception e)
             {
                 error = true;
-                Debug.LogWarning("ERREUR TRY CATCH");
             }
 
             yield return null;

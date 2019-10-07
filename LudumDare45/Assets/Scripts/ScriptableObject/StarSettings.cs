@@ -15,7 +15,7 @@ public class StarSettings : ScriptableObject
     [Header("Réglages Spawn")]
     [MinMaxRange(0.0001f, 1f)]
     public RangedFloat SizeOnSpawn;
-    [MinMaxRange(1f, 1000f)]
+    [MinMaxRange(1f, 10000f)]
     public RangedFloat MassOnSpawn;
 
     [MinMaxRange(0.1f, 10f)]
@@ -47,6 +47,12 @@ public class StarSettings : ScriptableObject
     [Range(-15000f, -1f)]
     public float gravityOnStar = -750f;
 
+    [Header("Explosion")]
+    [Range(0,1000)]
+    public int ashesNumber;
+    [Range(0f,1000f)]
+    public float ashesSpeed;
+
     [Header("Autres")]
     [Range(0.01f, 5f)]
     public  float maxSizeStar = 1f;
@@ -60,6 +66,12 @@ public class StarSettings : ScriptableObject
 
     [Range(0.01f, 2f)]
     public float AddSizeMultiplicator = 1f;
+
+    [Range(0, 100)]
+    public int DustsCreatedOnCollidingWithPlanet = 10;
+    [Range(0, 100)]
+    public int DustsCreatedOnCollidingWithStar = 10;
+
 
 
 }
