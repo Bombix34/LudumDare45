@@ -49,6 +49,10 @@ public class Star : SpaceElement
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+        if (this.body.mass > settings.massMax)
+        {
+            this.body.mass = settings.massMax;
+        }
     }
 
     private void OnDrawGizmos()
