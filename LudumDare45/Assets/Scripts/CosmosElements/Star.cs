@@ -89,6 +89,7 @@ public class Star : SpaceElement
             body.mass += (other.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
             //GameManager.Instance.RemovePlanet(other.gameObject);
             CheckNextStep();
+            SpawnSubEmitters(collision, settings.DustsCreatedOnCollidingWithPlanet);
             ScreenShake.instance.StartScreenShake(other.GetComponent<Rigidbody2D>().mass);
             animationAbsorption(other.GetComponent<Planet>());
         }
@@ -108,6 +109,7 @@ public class Star : SpaceElement
                 body.mass += (other.GetComponent<Rigidbody2D>().mass*settings.AddMassMultiplicator);
                 //GameManager.Instance.RemoveStar(other.gameObject);
                 CheckNextStep();
+                SpawnSubEmitters(collision, settings.DustsCreatedOnCollidingWithStar);
                 ScreenShake.instance.StartScreenShake(other.GetComponent<Rigidbody2D>().mass);
                 animationAbsorption(other.GetComponent<Star>());
             }
@@ -205,4 +207,13 @@ public class Star : SpaceElement
         big
     }
 
+    private void SpawnSubEmitters(Collision2D collision, int numberOfDustToCreate)
+    {
+        Vector2 p = collision.GetContact(0).point;
+        Vector3 point = new Vector3(p.x, p.y, this.transform.position.z);
+        for (int i = 0; i < numberOfDustToCreate; i++)
+        {
+            GameManager.Instance.AddAshes(Instantiate(GameManager.Instance.AshePrefab, point, Quaternion.identity));
+        }
+    }
 }
