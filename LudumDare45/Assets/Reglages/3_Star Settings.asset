@@ -27,7 +27,7 @@ MonoBehaviour:
   sizeToBeMediumStar: 0.18
   sizeToBeBigRedStar: 0.45
   massMax: 526
-  chanceToTransform: 0.05
+  chanceToTransform: 60
   massToTransform: 250
   gravityRange: 80
   gravityOnAshe: -200

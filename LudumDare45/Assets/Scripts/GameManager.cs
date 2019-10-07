@@ -77,7 +77,10 @@ public class GameManager : Singleton<GameManager>
         DebugUI.Instance.UpdateAshes(Ashes.Count);
 
         if (Ashes.Count >= 1 && MusicManager.Instance.MatchPhase(MusicManager.Phase.nothing))
+        {
+            MusicManager.Instance.ResetMusic();
             MusicManager.Instance.PlayNextPhase();
+        }
         else if(Ashes.Count>=100 && MusicManager.Instance.MatchPhase(MusicManager.Phase.firstDust))
             MusicManager.Instance.PlayNextPhase();
     }
@@ -113,7 +116,12 @@ public class GameManager : Singleton<GameManager>
         DebugUI.Instance.UpdateHoles(Holes.Count);
 
         if (Holes.Count >= 1 && MusicManager.Instance.MatchPhase(MusicManager.Phase.manySun))
-            MusicManager.Instance.PlayNextPhase();
+        {
+            if (MusicManager.Instance.GetCurrentPhase() != MusicManager.Phase.manySun)
+                MusicManager.Instance.ForceHolePhase();
+            else
+                MusicManager.Instance.PlayNextPhase();
+        }
     }
 
     public void RemoveHole(GameObject toRm)
@@ -129,11 +137,16 @@ public class GameManager : Singleton<GameManager>
         {
             //GAME FEEL / 20 
             MusicManager.Instance.PlayNextPhase();
+            MusicManager.Instance.currentPhase = MusicManager.Phase.nothing;
             print("END");
             foreach (var item in Holes)
                 Destroy(item);
             foreach (var item in Ashes)
                 Destroy(item);
+            Ashes.Clear();
+            Planets.Clear();
+            Stars.Clear();
+            Holes.Clear();
         }
     }
 
