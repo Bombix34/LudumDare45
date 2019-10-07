@@ -12,13 +12,23 @@ public class ZoneGraviteSettings : ScriptableObject
 
     [Header("Refraction")]
     [Range(0, 1000)]
-    public float RefractionForce = 500;
+    public float RefractionForceDust = 500;
+    [Range(0, 1000)]
+    public float RefractionForcePlanets = 500;
+    [Range(0, 1000)]
+    public float RefractionForceStars = 500;
+
     [Range(1, 500)]
     public float RefractionRange = 10;
 
     [Header("Attraction")]
     [Range(0, 1000)]
-    public float AttractionForce = 500;
+    public float AttractionForceDust = 500;
+    [Range(0, 1000)]
+    public float AttractionForcePlanets = 500;
+    [Range(0, 1000)]
+    public float AttractionForceStars = 500;
+
 
     [Range(1, 500)]
     public float AttractionRange = 10;

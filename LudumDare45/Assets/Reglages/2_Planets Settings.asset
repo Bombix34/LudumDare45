@@ -13,16 +13,56 @@ MonoBehaviour:
   m_Name: 2_Planets Settings
   m_EditorClassIdentifier: 
   planetMaterials:
-  - {fileID: 2100000, guid: 9a2453da29055fd448bd7f3780d0e2a9, type: 2}
-  - {fileID: 2100000, guid: 199b25e0cf1490448953932ea4bcf506, type: 2}
-  - {fileID: 2100000, guid: e5cae57db71b7674182be8b157d0e437, type: 2}
-  - {fileID: 2100000, guid: cd98c62c492f35a47b3f24d8c6788c1a, type: 2}
-  - {fileID: 2100000, guid: 03c7b7d96018dec42b607a1f54841797, type: 2}
   - {fileID: 2100000, guid: a84272dfc3139024b955f4d7e8a5796d, type: 2}
   - {fileID: 2100000, guid: 7d8de64552d0e1b4b81743b12a7128ab, type: 2}
   - {fileID: 2100000, guid: a4b96142db432244ab62f59554ee2963, type: 2}
   - {fileID: 2100000, guid: f52b03318cbe8cc47b609e36ce89cc8f, type: 2}
   - {fileID: 2100000, guid: a9fd1f7d498258d449f05491bb04064d, type: 2}
+  - {fileID: 2100000, guid: 46e5851125209534b82635b8568f5740, type: 2}
+  - {fileID: 2100000, guid: b5c15ebc2f9febf4888f9a242e281586, type: 2}
+  - {fileID: 2100000, guid: 20804824f8eba054ea07af2a33262ef1, type: 2}
+  - {fileID: 2100000, guid: 6b647fcae9eaae04eb20ed8044b6710a, type: 2}
+  - {fileID: 2100000, guid: 05296e6d19604c54db7754f88bd438bc, type: 2}
+  - {fileID: 2100000, guid: 5e4802b974ee8ca4e99a1646ca1e00ac, type: 2}
+  - {fileID: 2100000, guid: ea52048b62338c74f9e735899177e9bf, type: 2}
+  - {fileID: 2100000, guid: 2059721d1ddc1224aa400095db6ebc97, type: 2}
+  - {fileID: 2100000, guid: 59bd6494a255ced48ac4d347f9c6f860, type: 2}
+  - {fileID: 2100000, guid: e67f873a1323a7e4a9b22f8f9717b32b, type: 2}
+  - {fileID: 2100000, guid: 0b805f207e317b449b9552ce91e289df, type: 2}
+  - {fileID: 2100000, guid: 6820af5a2b2a5ec4c9541982da7c6dd0, type: 2}
+  - {fileID: 2100000, guid: f781a2f96961fb24a9afeef6346f71bf, type: 2}
+  - {fileID: 2100000, guid: 0d86381a89c8a5140a26f7c1f4c67eeb, type: 2}
+  - {fileID: 2100000, guid: 41975ced5d05f264c90c15871aacb5c7, type: 2}
+  - {fileID: 2100000, guid: 15f966bcb7cffe740b8c23325ce4eb03, type: 2}
+  - {fileID: 2100000, guid: 60dc20acf27806944825c9bbe53a91ae, type: 2}
+  - {fileID: 2100000, guid: 44015f5d38dfbc145865afb691ff74cd, type: 2}
+  - {fileID: 2100000, guid: b1679aa8f35142e4cb35f0f79215bf16, type: 2}
+  - {fileID: 2100000, guid: 83be845016af0de47b85b23ce59b7e92, type: 2}
+  - {fileID: 2100000, guid: 9a2453da29055fd448bd7f3780d0e2a9, type: 2}
+  - {fileID: 2100000, guid: 199b25e0cf1490448953932ea4bcf506, type: 2}
+  - {fileID: 2100000, guid: e5cae57db71b7674182be8b157d0e437, type: 2}
+  - {fileID: 2100000, guid: cd98c62c492f35a47b3f24d8c6788c1a, type: 2}
+  - {fileID: 2100000, guid: 03c7b7d96018dec42b607a1f54841797, type: 2}
+  - {fileID: 2100000, guid: 0d1a272d84ff3584ba1a4813a2328fc0, type: 2}
+  - {fileID: 2100000, guid: 3ac807e877b038b4fac5bac4c3dc17a2, type: 2}
+  - {fileID: 2100000, guid: f4103961d28507144b19acf48b1fccd8, type: 2}
+  - {fileID: 2100000, guid: a662e4b1e0dd6f04bb1dbe83da0da548, type: 2}
+  - {fileID: 2100000, guid: 03f5c1be3cba52a4787029d5429c658c, type: 2}
+  - {fileID: 2100000, guid: a8ce900fd95ba6e468b9b1bdf7282c94, type: 2}
+  - {fileID: 2100000, guid: 69f0287a8f8a2be4ea45c1ce2a62b3de, type: 2}
+  - {fileID: 2100000, guid: f6e43932a69ef614c8f2a6018ad23498, type: 2}
+  - {fileID: 2100000, guid: cca043cd9c648ec4b886be6d6885983b, type: 2}
+  - {fileID: 2100000, guid: 0e715adce912d16439cf5fcfe9da4783, type: 2}
+  - {fileID: 2100000, guid: 89bdd1ace0e4d1f4295faf4002557eb1, type: 2}
+  - {fileID: 2100000, guid: 905a922b3a36cbd41b81f9134532e698, type: 2}
+  - {fileID: 2100000, guid: a12e0d35feddc2f429d9e7365ddfd68e, type: 2}
+  - {fileID: 2100000, guid: c7620cd541899c1449b0fa5e608aff7a, type: 2}
+  - {fileID: 2100000, guid: 85b0b36de1bfe88468eaf01e41abcb63, type: 2}
+  - {fileID: 2100000, guid: a9dc1136f60f0574d93ea32c0f50cefa, type: 2}
+  - {fileID: 2100000, guid: 3449f3af19755e7408ac9565854664df, type: 2}
+  - {fileID: 2100000, guid: 009fc8440e59d5c4aa18ade228698ca0, type: 2}
+  - {fileID: 2100000, guid: 97e49e7fa942d554fb7756504e270dc1, type: 2}
+  - {fileID: 2100000, guid: 586613b196d84504797f9158d0c59201, type: 2}
   SizeOnSpawn:
     minValue: 0.033452477
     maxValue: 0.035179596

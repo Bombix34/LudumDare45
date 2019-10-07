@@ -14,7 +14,6 @@ public class ClickSpawner : MonoBehaviour
 
     private void Start()
     {
-        
     }
 
     void Update()
@@ -38,7 +37,6 @@ public class ClickSpawner : MonoBehaviour
                 chronoNoteSound -= Time.fixedDeltaTime;
             }
         }
-
 
         // mouse wheel up
         // add attraction force on gravity modifier
