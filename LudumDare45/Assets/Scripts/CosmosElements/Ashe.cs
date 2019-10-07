@@ -78,6 +78,7 @@ public class Ashe : SpaceElement
             {
                 GameManager manager = GameManager.Instance;
                 manager.AddPlanet(Instantiate(manager.PlanetPrefab, this.transform.position, Quaternion.identity));
+                SoundManager.Instance.PlaySound(5);
                 manager.RemoveAshe(this.gameObject);
             }
         }

@@ -92,6 +92,7 @@ public class Planet : SpaceElement
             {
                 GameManager manager = GameManager.Instance;
                 manager.AddStar(nextStepObject = Instantiate(manager.StarPrefab, this.transform.position, Quaternion.identity));
+                SoundManager.Instance.PlaySound(6);
                 manager.RemovePlanet(this.gameObject);
                 willTransformForNextStep = true;
             }
