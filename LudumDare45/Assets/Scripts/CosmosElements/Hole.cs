@@ -19,6 +19,8 @@ public class Hole : SpaceElement
         body.velocity = new Vector2(0f,0f);
         transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
         body.MoveRotation(Random.Range(0f, 360f));
+
+        absorption = AnimationAbsorbtion.Initialize();
     }
 
     private void Start()
@@ -72,8 +74,10 @@ public class Hole : SpaceElement
             transform.localScale = new Vector3(newSize, transform.localScale.y, newSize);
             UpdateGravity();
             body.mass += (other.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
-            GameManager.Instance.RemovePlanet(other.gameObject);
+            //GameManager.Instance.RemovePlanet(other.gameObject);
             CheckNextStep();
+            ScreenShake.instance.StartScreenShake(other.GetComponent<Rigidbody2D>().mass);
+            animationAbsorption(other.GetComponent<Planet>());
         }
         else if (other.tag == "Star")
         {
@@ -83,8 +87,10 @@ public class Hole : SpaceElement
             transform.localScale = new Vector3(newSize, transform.localScale.y, newSize);
             UpdateGravity();
             body.mass += (other.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
-            GameManager.Instance.RemoveStar(other.gameObject);
+            //GameManager.Instance.RemoveStar(other.gameObject);
             CheckNextStep();
+            ScreenShake.instance.StartScreenShake(other.GetComponent<Rigidbody2D>().mass);
+            animationAbsorption(other.GetComponent<Star>());
         }
         else if(other.tag=="Hole")
         {
@@ -98,7 +104,9 @@ public class Hole : SpaceElement
                 UpdateGravity();
                 body.mass += (other.GetComponent<Rigidbody2D>().mass * settings.AddMassMultiplicator);
                 GameManager.Instance.RemoveHole(other.gameObject);
+                ScreenShake.instance.StartScreenShake(other.GetComponent<Rigidbody2D>().mass);
                 CheckNextStep();
+                //animationAbsorption(other.GetComponent<Hole>());
             }
         }
     }
@@ -125,9 +133,4 @@ public class Hole : SpaceElement
     {
     }
 
-
-    public void OnDestroy()
-    {
-        ScreenShake.instance.StartScreenShake(GetComponent<Rigidbody2D>().mass);
-    }
 }

@@ -132,3 +132,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 7387887006508108172}
   settings: {fileID: 11400000, guid: 5ea072d0a062d4442871af9350f3128c, type: 2}
+  timeInvulnerable: 1

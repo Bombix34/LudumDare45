@@ -5,7 +5,9 @@ using UnityEngine;
 public abstract class SpaceElement : MonoBehaviour
 {
     [SerializeField] protected Rigidbody2D body;
-
+    protected AnimationAbsorbtion absorption;
+    protected GameObject nextStepObject;
+    protected bool willTransformForNextStep;
 
     protected virtual void Awake()
     {
@@ -43,6 +45,69 @@ public abstract class SpaceElement : MonoBehaviour
         else if (transform.localPosition.y < -screenRange.y / 2)
         {
             transform.localPosition = new Vector3(transform.localPosition.x, screenRange.y / 2, transform.localPosition.z);
+        }
+    }
+
+    protected void animationAbsorption(Planet other)
+    {
+        // if the current element will transform at the next frame
+        if (willTransformForNextStep)
+        {
+            // we set the animation not on the current element, but on the next one
+            other.absorption.startAnimationAbsorbtion(other.gameObject, nextStepObject, other, () =>
+            {
+                GameManager.Instance.RemovePlanet(other.gameObject);
+            });
+            willTransformForNextStep = false;
+        }
+        else
+        {
+            other.absorption.startAnimationAbsorbtion(other.gameObject, gameObject, other, () =>
+            {
+                GameManager.Instance.RemovePlanet(other.gameObject);
+            });
+        }
+    }
+
+    protected void animationAbsorption(Star other)
+    {
+        // if the current element will transform at the next frame
+        if (willTransformForNextStep)
+        {
+            // we set the animation not on the current element, but on the next one
+            other.absorption.startAnimationAbsorbtion(other.gameObject, nextStepObject, this, () =>
+            {
+                GameManager.Instance.RemoveStar(other.gameObject);
+            });
+            willTransformForNextStep = false;
+        }
+        else
+        {
+            other.absorption.startAnimationAbsorbtion(other.gameObject, gameObject, this, () =>
+            {
+                GameManager.Instance.RemoveStar(other.gameObject);
+            });
+        }
+    }
+
+    protected void animationAbsorption(Hole other)
+    {
+        // if the current element will transform at the next frame
+        if (willTransformForNextStep)
+        {
+            // we set the animation not on the current element, but on the next one
+            other.absorption.startAnimationAbsorbtion(other.gameObject, nextStepObject, this, () =>
+            {
+                GameManager.Instance.RemoveHole(other.gameObject);
+            });
+            willTransformForNextStep = false;
+        }
+        else
+        {
+            other.absorption.startAnimationAbsorbtion(other.gameObject, gameObject, this, () =>
+            {
+                GameManager.Instance.RemoveHole(other.gameObject);
+            });
         }
     }
 }

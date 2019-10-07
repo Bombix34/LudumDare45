@@ -8,7 +8,7 @@ public class Ashe : SpaceElement
 
     UTimer timerAsheInvulnerable;
 
-    float timeInvulnerable = 0.5f;
+    public float timeInvulnerable = 0.5f;
 
     bool IsInvulnerable = true;
 
