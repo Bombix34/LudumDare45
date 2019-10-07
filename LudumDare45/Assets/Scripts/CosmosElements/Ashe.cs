@@ -20,6 +20,7 @@ public class Ashe : SpaceElement
         body.velocity = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * Random.Range(settings.SpeedOnSpawn.minValue, settings.SpeedOnSpawn.maxValue);
         transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
         body.MoveRotation(Random.Range(0f, 360f));
+        GetComponent<CircleCollider2D>().enabled = false;
     }
 
     protected void Start()
@@ -35,10 +36,10 @@ public class Ashe : SpaceElement
 
    protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (IsInvulnerable)
+        /*if (IsInvulnerable)
         {
             return;
-        }
+        }*/
         GameObject other = collision.gameObject;
         if (other.tag == "Ashe")
         {
@@ -91,7 +92,7 @@ public class Ashe : SpaceElement
 
     private void becomeNotInvulnerable()
     {
-        IsInvulnerable = false;
+        GetComponent<CircleCollider2D>().enabled = true;
     }
 
 }
