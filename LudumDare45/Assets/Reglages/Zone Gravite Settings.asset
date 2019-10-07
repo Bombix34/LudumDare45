@@ -17,6 +17,6 @@ MonoBehaviour:
   RefractionForceStars: 920
   RefractionRange: 25
   AttractionForceDust: 75
-  AttractionForcePlanets: 100
+  AttractionForcePlanets: 75
   AttractionForceStars: 700
   AttractionRange: 25

@@ -47,6 +47,12 @@ public class StarSettings : ScriptableObject
     [Range(-15000f, -1f)]
     public float gravityOnStar = -750f;
 
+    [Header("Explosion")]
+    [Range(0,1000)]
+    public int ashesNumber;
+    [Range(0f,1000f)]
+    public float ashesSpeed;
+
     [Header("Autres")]
     [Range(0.01f, 5f)]
     public  float maxSizeStar = 1f;

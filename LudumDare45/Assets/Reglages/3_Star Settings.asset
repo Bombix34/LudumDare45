@@ -28,14 +28,16 @@ MonoBehaviour:
   sizeToBeBigRedStar: 0.28
   massMax: 5100
   chanceToTransform: 1
-  massToTransform: 4000
+  massToTransform: 5000
   gravityRange: 60
   gravityOnAshe: -30
   gravityOnPlanet: -300
   gravityOnStar: -750
+  ashesNumber: 100
+  ashesSpeed: 15
   maxSizeStar: 0.4
   AddMassMultiplicator: 0.1
   lightIntensity:
     minValue: 52.915672
     maxValue: 70.332535
-  AddSizeMultiplicator: 0.03
+  AddSizeMultiplicator: 0.015

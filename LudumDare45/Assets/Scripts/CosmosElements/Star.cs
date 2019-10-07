@@ -147,6 +147,7 @@ public class Star : SpaceElement
             if (rand < (settings.chanceToTransform / 100))
             {
                 GameManager manager = GameManager.Instance;
+                StartCoroutine(Explosion());
                 manager.AddHole(nextStepObject = Instantiate(manager.HolePrefab, this.transform.position, Quaternion.identity));
                 SoundManager.Instance.PlaySound(7);
                 manager.RemoveStar(this.gameObject);
@@ -177,6 +178,19 @@ public class Star : SpaceElement
         starArea.GetComponent<CircleCollider2D>().radius = settings.gravityRange * transform.localScale.x;
 
         //GetComponent<CircleCollider2D>().radius =3.2f * transform.localScale.x;
+    }
+
+     IEnumerator Explosion()
+    {
+        GameObject ashe;
+        for(int i = 0; i<settings.ashesNumber; i++)
+        {
+            ashe = Instantiate(GameManager.Instance.AshePrefab, this.transform.position + new Vector3(Random.Range(-1f, 1f),Random.Range(-1f, 1f),0), Quaternion.identity);
+            GameManager.Instance.AddAshes(ashe);
+            ashe.GetComponent<Ashe>().ChangeVelocity(Vector3.Normalize(ashe.transform.position - this.transform.position), settings.ashesSpeed);
+        }
+
+        yield return new WaitForSeconds(0.5f);
     }
 
     public override void AddNewMaterial()

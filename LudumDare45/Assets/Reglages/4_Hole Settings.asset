@@ -26,6 +26,6 @@ MonoBehaviour:
   gravityOnPlanet: -200
   gravityOnStar: -500
   gravityOnHoles: -1
-  maxSizeHole: 47.7
+  maxSizeHole: 50
   AddMassMultiplicator: 0.1
   AddSizeMultiplicator: 0.1

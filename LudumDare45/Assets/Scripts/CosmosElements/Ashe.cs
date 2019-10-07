@@ -84,6 +84,11 @@ public class Ashe : SpaceElement
         }
     }
 
+    public void ChangeVelocity(Vector2 direction, float velocity)
+    {
+        body.velocity = direction * velocity;
+    }
+
     public override void AddNewMaterial()
     {
         GetComponent<MeshRenderer>().material = settings.GetRandomMaterial();
