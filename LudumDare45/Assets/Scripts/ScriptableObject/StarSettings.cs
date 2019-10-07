@@ -56,7 +56,7 @@ public class StarSettings : ScriptableObject
     public RangedFloat lightIntensity;
 
 
-    [Range(0.1f, 2f)]
+    [Range(0.01f, 2f)]
     public float AddSizeMultiplicator = 1f;
 
 

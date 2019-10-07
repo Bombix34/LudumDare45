@@ -40,6 +40,6 @@ public class PlanetSettings : ScriptableObject
     [Range(0.1f, 2f)]
     public float AddMassMultiplicator = 1f;
 
-    [Range(0.1f, 2f)]
+    [Range(0.01f, 2f)]
     public float AddSizeMultiplicator = 1f;
 }
