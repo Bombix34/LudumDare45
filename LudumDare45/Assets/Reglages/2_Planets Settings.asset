@@ -79,3 +79,4 @@ MonoBehaviour:
   maxSizePlanet: 0.1
   AddMassMultiplicator: 0.1
   AddSizeMultiplicator: 0.1
+  DustsCreatedOnCollidingWithPlanet: 100

@@ -8,7 +8,6 @@ public class DirectionalLightRotation : MonoBehaviour
     Color32 newColor;
     Light dirLight;
 
-    // Start is called before the first frame update
     void Start()
     {
         colors = new Color32[6];

@@ -41,3 +41,5 @@ MonoBehaviour:
     minValue: 52.915672
     maxValue: 70.332535
   AddSizeMultiplicator: 0.015
+  DustsCreatedOnCollidingWithPlanet: 100
+  DustsCreatedOnCollidingWithStar: 300

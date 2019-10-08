@@ -69,7 +69,7 @@ public class StarSettings : ScriptableObject
 
     [Range(0, 100)]
     public int DustsCreatedOnCollidingWithPlanet = 10;
-    [Range(0, 100)]
+    [Range(0, 300)]
     public int DustsCreatedOnCollidingWithStar = 10;
 
 
